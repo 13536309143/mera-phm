@@ -1,0 +1,23 @@
+# Private configuration and credentials
+.env
+.env.*
+!.env.example
+# Original data, generated fixtures, models and local runs
+data/raw/**
+data/demo/**
+artifacts/**
+runs/**
+work/**
+*.joblib
+# Local environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+.DS_Store
+._*

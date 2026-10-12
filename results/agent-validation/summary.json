@@ -1,0 +1,71 @@
+{
+  "protocol": {
+    "cases": [
+      {
+        "stratum": "visible_curve",
+        "equipment": 27,
+        "row": 2
+      },
+      {
+        "stratum": "missing_curve_valid_history",
+        "equipment": 27,
+        "row": 6
+      },
+      {
+        "stratum": "pre_repair_history",
+        "equipment": 27,
+        "row": 10
+      }
+    ],
+    "modes": [
+      "deterministic_control",
+      "single_agent",
+      "multi_agent"
+    ],
+    "model_sha256": "c352efc42834daf9ad5b46c68b8040815e4332698464e8f1fdafc9d8f7db6102",
+    "api_model": "MiniMax-M3.1-Flash-Preview",
+    "approximate_total_token_budget": 50000,
+    "selection": "Causal quality strata on model-held-out devices; no future labels used.",
+    "limitations": "Small exploratory integration sample; numeric predictor fixed across modes. Semantic language accuracy not established."
+  },
+  "aggregate": {
+    "deterministic_control": {
+      "cases": 3,
+      "completed": 3,
+      "numeric_consistent": 3,
+      "requests": 0,
+      "tokens": 0,
+      "mean_seconds": 0.0,
+      "language_validation_rejections": 0,
+      "budget_censored_cases": 0,
+      "uncensored_cases": 3
+    },
+    "single_agent": {
+      "cases": 3,
+      "completed": 2,
+      "numeric_consistent": 3,
+      "requests": 10,
+      "tokens": 15104,
+      "mean_seconds": 3.5553333333333335,
+      "language_validation_rejections": 0,
+      "budget_censored_cases": 1,
+      "uncensored_cases": 2
+    },
+    "multi_agent": {
+      "cases": 3,
+      "completed": 1,
+      "numeric_consistent": 3,
+      "requests": 27,
+      "tokens": 33066,
+      "mean_seconds": 24.191333333333333,
+      "language_validation_rejections": 6,
+      "budget_censored_cases": 2,
+      "uncensored_cases": 1
+    }
+  },
+  "measured_api_tokens": 48170,
+  "usage_unknown": false,
+  "requests_attempted": 37,
+  "language_semantic_accuracy": "not measured; process completion is not semantic correctness",
+  "limitations": "Three planned strata, three API mode-runs truncated by shared budget. Censored outcomes are not intrinsic architecture failures. No statistical completion-rate or semantic-accuracy claim."
+}

@@ -1,0 +1,3766 @@
+[
+  {
+    "stratum": "visible_short_horizon",
+    "equipment": 47,
+    "row": 10,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "visible_short_horizon",
+    "equipment": 47,
+    "row": 10,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 4,
+    "tokens": 6692,
+    "usage_complete": true,
+    "seconds": 5.939,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 892,
+      "completion_tokens": 53,
+      "total_tokens": 945,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1ab1f3883a8da6b9fba76a33108f",
+          "seconds": 0.999,
+          "prompt_tokens": 892,
+          "completion_tokens": 53,
+          "total_tokens": 945,
+          "charged_completion_tokens": 53
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_short_horizon",
+    "equipment": 47,
+    "row": 10,
+    "mode": "multi_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 11,
+    "tokens": 14356,
+    "usage_complete": true,
+    "seconds": 25.309,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 2,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1166,
+      "completion_tokens": 117,
+      "total_tokens": 1283,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1acb049494ec847756917efd2a6a",
+          "seconds": 1.266,
+          "prompt_tokens": 1166,
+          "completion_tokens": 117,
+          "total_tokens": 1283,
+          "charged_completion_tokens": 117
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_short_horizon",
+    "equipment": 49,
+    "row": 165,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "visible_short_horizon",
+    "equipment": 49,
+    "row": 165,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 4,
+    "tokens": 6492,
+    "usage_complete": true,
+    "seconds": 4.665,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 847,
+      "completion_tokens": 121,
+      "total_tokens": 968,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1aafbeca2652fb7964b6797daf06",
+          "seconds": 1.77,
+          "prompt_tokens": 847,
+          "completion_tokens": 121,
+          "total_tokens": 968,
+          "charged_completion_tokens": 121
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_short_horizon",
+    "equipment": 49,
+    "row": 165,
+    "mode": "multi_agent",
+    "process_completed": false,
+    "error": "达到 API 请求预算。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 12,
+    "tokens": 11381,
+    "usage_complete": true,
+    "seconds": 18.71,
+    "independent_contexts": 4,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 3,
+    "tool_errors": 1,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "other_evidence_contradiction",
+        "unsupported_confidence",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 990,
+      "completion_tokens": 129,
+      "total_tokens": 1119,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1ac4613619ad661b9712c6db120f",
+          "seconds": 1.446,
+          "prompt_tokens": 990,
+          "completion_tokens": 129,
+          "total_tokens": 1119,
+          "charged_completion_tokens": 129
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_short_horizon",
+    "equipment": 49,
+    "row": 165,
+    "mode": "multi_agent_rescue",
+    "process_completed": false,
+    "error": "达到 API 请求预算。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 20,
+    "tokens": 19622,
+    "usage_complete": true,
+    "seconds": 31.217,
+    "independent_contexts": 4,
+    "completed_evidence_roles": [
+      "text"
+    ],
+    "validation_rejections": 8,
+    "tool_errors": 6,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 917,
+      "completion_tokens": 99,
+      "total_tokens": 1016,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1ae5460e8388a64d0e524d254e5c",
+          "seconds": 1.245,
+          "prompt_tokens": 917,
+          "completion_tokens": 99,
+          "total_tokens": 1016,
+          "charged_completion_tokens": 99
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_long_horizon",
+    "equipment": 13,
+    "row": 144,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "visible_long_horizon",
+    "equipment": 13,
+    "row": 144,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 4,
+    "tokens": 6760,
+    "usage_complete": true,
+    "seconds": 6.467,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "text_age_misinterpretation",
+        "unsupported_severity"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 932,
+      "completion_tokens": 249,
+      "total_tokens": 1181,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1aed04a4fb3658eb587f51a4228d",
+          "seconds": 2.875,
+          "prompt_tokens": 932,
+          "completion_tokens": 249,
+          "total_tokens": 1181,
+          "charged_completion_tokens": 249
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_long_horizon",
+    "equipment": 13,
+    "row": 144,
+    "mode": "multi_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 11,
+    "tokens": 13053,
+    "usage_complete": true,
+    "seconds": 14.675,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 2,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "other_evidence_contradiction",
+        "text_age_misinterpretation",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1095,
+      "completion_tokens": 225,
+      "total_tokens": 1320,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1aff7afd77bdfed1c39be39512fc",
+          "seconds": 2.077,
+          "prompt_tokens": 1095,
+          "completion_tokens": 225,
+          "total_tokens": 1320,
+          "charged_completion_tokens": 225
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_short_horizon",
+    "equipment": 34,
+    "row": 39,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "visible_short_horizon",
+    "equipment": 34,
+    "row": 39,
+    "mode": "multi_agent",
+    "process_completed": false,
+    "error": "达到 API 请求预算。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 12,
+    "tokens": 14182,
+    "usage_complete": true,
+    "seconds": 36.217,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 4,
+    "tool_errors": 1,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "unsupported_severity",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1100,
+      "completion_tokens": 146,
+      "total_tokens": 1246,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1acfeb4e459252e1e20f52509812",
+          "seconds": 5.816,
+          "prompt_tokens": 1100,
+          "completion_tokens": 146,
+          "total_tokens": 1246,
+          "charged_completion_tokens": 146
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_short_horizon",
+    "equipment": 34,
+    "row": 39,
+    "mode": "multi_agent_rescue",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 19,
+    "tokens": 24193,
+    "usage_complete": true,
+    "seconds": 32.226,
+    "independent_contexts": 4,
+    "completed_evidence_roles": [
+      "maintenance",
+      "visual"
+    ],
+    "validation_rejections": 7,
+    "tool_errors": 2,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "text_age_misinterpretation",
+        "unsupported_confidence",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1142,
+      "completion_tokens": 197,
+      "total_tokens": 1339,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1af5af16cd8e6f0596098b15ef9d",
+          "seconds": 2.0,
+          "prompt_tokens": 1142,
+          "completion_tokens": 197,
+          "total_tokens": 1339,
+          "charged_completion_tokens": 197
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_short_horizon",
+    "equipment": 34,
+    "row": 39,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 7,
+    "tokens": 13514,
+    "usage_complete": true,
+    "seconds": 8.528,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 1,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 850,
+      "completion_tokens": 97,
+      "total_tokens": 947,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b009ebbc8851f10fbe44d951186",
+          "seconds": 1.465,
+          "prompt_tokens": 850,
+          "completion_tokens": 97,
+          "total_tokens": 947,
+          "charged_completion_tokens": 97
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_short_horizon",
+    "equipment": 2,
+    "row": 72,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "visible_short_horizon",
+    "equipment": 2,
+    "row": 72,
+    "mode": "multi_agent",
+    "process_completed": false,
+    "error": "达到 API 请求预算。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 12,
+    "tokens": 11561,
+    "usage_complete": true,
+    "seconds": 19.796,
+    "independent_contexts": 4,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 3,
+    "tool_errors": 1,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 968,
+      "completion_tokens": 146,
+      "total_tokens": 1114,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1ae1f29fedb783f47dbc4baa2df5",
+          "seconds": 2.116,
+          "prompt_tokens": 968,
+          "completion_tokens": 146,
+          "total_tokens": 1114,
+          "charged_completion_tokens": 146
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_short_horizon",
+    "equipment": 2,
+    "row": 72,
+    "mode": "multi_agent_rescue",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 11,
+    "tokens": 14551,
+    "usage_complete": true,
+    "seconds": 22.843,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 2,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "other_evidence_contradiction",
+        "text_age_misinterpretation",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1246,
+      "completion_tokens": 239,
+      "total_tokens": 1485,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1afa21c1294c574c3918b6ff1aa7",
+          "seconds": 5.933,
+          "prompt_tokens": 1246,
+          "completion_tokens": 239,
+          "total_tokens": 1485,
+          "charged_completion_tokens": 239
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_short_horizon",
+    "equipment": 2,
+    "row": 72,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 4,
+    "tokens": 6652,
+    "usage_complete": true,
+    "seconds": 13.633,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "unsupported_severity"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 815,
+      "completion_tokens": 135,
+      "total_tokens": 950,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b0e27a8e7aa754cdbf87c17fcea",
+          "seconds": 2.955,
+          "prompt_tokens": 815,
+          "completion_tokens": 135,
+          "total_tokens": 950,
+          "charged_completion_tokens": 135
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_long_horizon",
+    "equipment": 5,
+    "row": 17,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "visible_long_horizon",
+    "equipment": 5,
+    "row": 17,
+    "mode": "single_agent",
+    "process_completed": false,
+    "error": "单 Agent 未在预算内完成流程。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 9,
+    "tokens": 16578,
+    "usage_complete": true,
+    "seconds": 16.614,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "numeric",
+      "retrieval",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 2,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": false,
+      "reason": "no accepted prose",
+      "findings": []
+    },
+    "screen_usage": {}
+  },
+  {
+    "stratum": "visible_long_horizon",
+    "equipment": 5,
+    "row": 17,
+    "mode": "multi_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 11,
+    "tokens": 14314,
+    "usage_complete": true,
+    "seconds": 22.185,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 2,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "unsupported_confidence",
+        "unsupported_severity",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1324,
+      "completion_tokens": 184,
+      "total_tokens": 1508,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b29cf1f39589139747e101ca20a",
+          "seconds": 2.613,
+          "prompt_tokens": 1324,
+          "completion_tokens": 184,
+          "total_tokens": 1508,
+          "charged_completion_tokens": 184
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_long_horizon",
+    "equipment": 34,
+    "row": 74,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "visible_long_horizon",
+    "equipment": 34,
+    "row": 74,
+    "mode": "multi_agent",
+    "process_completed": false,
+    "error": "达到 API 请求预算。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 12,
+    "tokens": 12815,
+    "usage_complete": true,
+    "seconds": 19.028,
+    "independent_contexts": 4,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 2,
+    "tool_errors": 1,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "other_evidence_contradiction",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 948,
+      "completion_tokens": 223,
+      "total_tokens": 1171,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b1518ecec6bcc61e3022ebc13d7",
+          "seconds": 5.473,
+          "prompt_tokens": 948,
+          "completion_tokens": 223,
+          "total_tokens": 1171,
+          "charged_completion_tokens": 223
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_long_horizon",
+    "equipment": 34,
+    "row": 74,
+    "mode": "multi_agent_rescue",
+    "process_completed": false,
+    "error": "监督 Agent 未在预算内完成流程。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 17,
+    "tokens": 21834,
+    "usage_complete": true,
+    "seconds": 28.418,
+    "independent_contexts": 4,
+    "completed_evidence_roles": [
+      "numeric",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 5,
+    "tool_errors": 1,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "text_age_misinterpretation",
+        "unsupported_confidence"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1266,
+      "completion_tokens": 215,
+      "total_tokens": 1481,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b37595df8546d19e8d88df54726",
+          "seconds": 9.738,
+          "prompt_tokens": 1266,
+          "completion_tokens": 215,
+          "total_tokens": 1481,
+          "charged_completion_tokens": 215
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_long_horizon",
+    "equipment": 34,
+    "row": 74,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 4,
+    "tokens": 7100,
+    "usage_complete": true,
+    "seconds": 3.812,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "other_evidence_contradiction"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 813,
+      "completion_tokens": 73,
+      "total_tokens": 886,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b459efa2f91e20ad7f29632f931",
+          "seconds": 0.948,
+          "prompt_tokens": 813,
+          "completion_tokens": 73,
+          "total_tokens": 886,
+          "charged_completion_tokens": 73
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "missing_curve_valid_history",
+    "equipment": 11,
+    "row": 23,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "missing_curve_valid_history",
+    "equipment": 11,
+    "row": 23,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 4,
+    "tokens": 6677,
+    "usage_complete": true,
+    "seconds": 4.257,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "other_evidence_contradiction",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 833,
+      "completion_tokens": 128,
+      "total_tokens": 961,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b30d588b4bd8bc7ebfa7a719bdf",
+          "seconds": 1.295,
+          "prompt_tokens": 833,
+          "completion_tokens": 128,
+          "total_tokens": 961,
+          "charged_completion_tokens": 128
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "missing_curve_valid_history",
+    "equipment": 11,
+    "row": 23,
+    "mode": "multi_agent",
+    "process_completed": false,
+    "error": "达到 API 请求预算。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 12,
+    "tokens": 11580,
+    "usage_complete": true,
+    "seconds": 23.041,
+    "independent_contexts": 4,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric"
+    ],
+    "validation_rejections": 3,
+    "tool_errors": 1,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "history_validity_contradiction",
+        "other_evidence_contradiction",
+        "unsupported_confidence",
+        "unsupported_repair_claim",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1029,
+      "completion_tokens": 269,
+      "total_tokens": 1298,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b498e95d97908f142ee79c3c23d",
+          "seconds": 2.546,
+          "prompt_tokens": 1029,
+          "completion_tokens": 269,
+          "total_tokens": 1298,
+          "charged_completion_tokens": 269
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "missing_curve_valid_history",
+    "equipment": 11,
+    "row": 23,
+    "mode": "multi_agent_rescue",
+    "process_completed": false,
+    "error": "监督 Agent 未在预算内完成流程。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 18,
+    "tokens": 18341,
+    "usage_complete": true,
+    "seconds": 20.478,
+    "independent_contexts": 5,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 5,
+    "tool_errors": 4,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "other_evidence_contradiction",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 874,
+      "completion_tokens": 143,
+      "total_tokens": 1017,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b60f83466a8eb8dd3bb69885b2c",
+          "seconds": 1.452,
+          "prompt_tokens": 874,
+          "completion_tokens": 143,
+          "total_tokens": 1017,
+          "charged_completion_tokens": 143
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_long_horizon",
+    "equipment": 41,
+    "row": 61,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "visible_long_horizon",
+    "equipment": 41,
+    "row": 61,
+    "mode": "multi_agent",
+    "process_completed": false,
+    "error": "达到 API 请求预算。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 12,
+    "tokens": 11710,
+    "usage_complete": true,
+    "seconds": 41.953,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric"
+    ],
+    "validation_rejections": 5,
+    "tool_errors": 3,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "unsupported_severity"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 777,
+      "completion_tokens": 107,
+      "total_tokens": 884,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b3b162139dc1c6926cf5fc92cfa",
+          "seconds": 4.146,
+          "prompt_tokens": 777,
+          "completion_tokens": 107,
+          "total_tokens": 884,
+          "charged_completion_tokens": 107
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_long_horizon",
+    "equipment": 41,
+    "row": 61,
+    "mode": "multi_agent_rescue",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 14,
+    "tokens": 16001,
+    "usage_complete": true,
+    "seconds": 29.661,
+    "independent_contexts": 4,
+    "completed_evidence_roles": [
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 3,
+    "tool_errors": 1,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "text_age_misinterpretation"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1070,
+      "completion_tokens": 103,
+      "total_tokens": 1173,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b5d4dde5d69109f97399e733235",
+          "seconds": 1.153,
+          "prompt_tokens": 1070,
+          "completion_tokens": 103,
+          "total_tokens": 1173,
+          "charged_completion_tokens": 103
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "visible_long_horizon",
+    "equipment": 41,
+    "row": 61,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 4,
+    "tokens": 7101,
+    "usage_complete": true,
+    "seconds": 7.122,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 866,
+      "completion_tokens": 252,
+      "total_tokens": 1118,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b66c21fc39d582f1331170122dd",
+          "seconds": 2.043,
+          "prompt_tokens": 866,
+          "completion_tokens": 252,
+          "total_tokens": 1118,
+          "charged_completion_tokens": 252
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "missing_curve_valid_history",
+    "equipment": 47,
+    "row": 63,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "missing_curve_valid_history",
+    "equipment": 47,
+    "row": 63,
+    "mode": "multi_agent",
+    "process_completed": false,
+    "error": "监督 Agent 未在预算内完成流程。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 12,
+    "tokens": 17103,
+    "usage_complete": true,
+    "seconds": 29.758,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 4,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1033,
+      "completion_tokens": 41,
+      "total_tokens": 1074,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b6482e26eeb8e55847fdfa18dbd",
+          "seconds": 2.012,
+          "prompt_tokens": 1033,
+          "completion_tokens": 41,
+          "total_tokens": 1074,
+          "charged_completion_tokens": 41
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "missing_curve_valid_history",
+    "equipment": 47,
+    "row": 63,
+    "mode": "multi_agent_rescue",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 10,
+    "tokens": 12269,
+    "usage_complete": true,
+    "seconds": 15.338,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 1,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1202,
+      "completion_tokens": 166,
+      "total_tokens": 1368,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b76a00f2a6004d4663112051c1a",
+          "seconds": 3.133,
+          "prompt_tokens": 1202,
+          "completion_tokens": 166,
+          "total_tokens": 1368,
+          "charged_completion_tokens": 166
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "missing_curve_valid_history",
+    "equipment": 47,
+    "row": 63,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 4,
+    "tokens": 6136,
+    "usage_complete": true,
+    "seconds": 5.519,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "unsupported_confidence"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 841,
+      "completion_tokens": 182,
+      "total_tokens": 1023,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b7fe82172babc86415727cc9fa6",
+          "seconds": 1.936,
+          "prompt_tokens": 841,
+          "completion_tokens": 182,
+          "total_tokens": 1023,
+          "charged_completion_tokens": 182
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "missing_curve_valid_history",
+    "equipment": 5,
+    "row": 43,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "missing_curve_valid_history",
+    "equipment": 5,
+    "row": 43,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 5,
+    "tokens": 8886,
+    "usage_complete": true,
+    "seconds": 4.804,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "other_evidence_contradiction",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 799,
+      "completion_tokens": 127,
+      "total_tokens": 926,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b67d2c1c03481702a7c03d2f496",
+          "seconds": 2.2,
+          "prompt_tokens": 799,
+          "completion_tokens": 127,
+          "total_tokens": 926,
+          "charged_completion_tokens": 127
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "missing_curve_valid_history",
+    "equipment": 5,
+    "row": 43,
+    "mode": "multi_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 10,
+    "tokens": 12476,
+    "usage_complete": true,
+    "seconds": 22.698,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 1,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "other_evidence_contradiction"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1320,
+      "completion_tokens": 118,
+      "total_tokens": 1438,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b80adc416c11900d3a547670380",
+          "seconds": 1.049,
+          "prompt_tokens": 1320,
+          "completion_tokens": 118,
+          "total_tokens": 1438,
+          "charged_completion_tokens": 118
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "pre_repair_history",
+    "equipment": 5,
+    "row": 106,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "pre_repair_history",
+    "equipment": 5,
+    "row": 106,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 3,
+    "tokens": 4947,
+    "usage_complete": true,
+    "seconds": 5.525,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "history_validity_contradiction"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 841,
+      "completion_tokens": 194,
+      "total_tokens": 1035,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b87e0e60a6285d51087ca0a695a",
+          "seconds": 2.113,
+          "prompt_tokens": 841,
+          "completion_tokens": 194,
+          "total_tokens": 1035,
+          "charged_completion_tokens": 194
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "pre_repair_history",
+    "equipment": 5,
+    "row": 106,
+    "mode": "multi_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 12,
+    "tokens": 15452,
+    "usage_complete": true,
+    "seconds": 18.704,
+    "independent_contexts": 4,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "history_validity_contradiction",
+        "unsupported_severity",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1511,
+      "completion_tokens": 174,
+      "total_tokens": 1685,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b9cd0aab6475f892324eae32dff",
+          "seconds": 1.466,
+          "prompt_tokens": 1511,
+          "completion_tokens": 174,
+          "total_tokens": 1685,
+          "charged_completion_tokens": 174
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "missing_curve_valid_history",
+    "equipment": 13,
+    "row": 46,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "missing_curve_valid_history",
+    "equipment": 13,
+    "row": 46,
+    "mode": "multi_agent",
+    "process_completed": false,
+    "error": "达到 API 请求预算。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 12,
+    "tokens": 12696,
+    "usage_complete": true,
+    "seconds": 23.423,
+    "independent_contexts": 4,
+    "completed_evidence_roles": [
+      "numeric",
+      "retrieval"
+    ],
+    "validation_rejections": 4,
+    "tool_errors": 1,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "other_evidence_contradiction",
+        "text_age_misinterpretation",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1039,
+      "completion_tokens": 198,
+      "total_tokens": 1237,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1b8035054632ca44c6b585cc34fa",
+          "seconds": 4.659,
+          "prompt_tokens": 1039,
+          "completion_tokens": 198,
+          "total_tokens": 1237,
+          "charged_completion_tokens": 198
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "missing_curve_valid_history",
+    "equipment": 13,
+    "row": 46,
+    "mode": "multi_agent_rescue",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 14,
+    "tokens": 15604,
+    "usage_complete": true,
+    "seconds": 27.135,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 3,
+    "tool_errors": 1,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "text_age_misinterpretation",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1108,
+      "completion_tokens": 140,
+      "total_tokens": 1248,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1ba01eaea687fa579e0050109c95",
+          "seconds": 2.152,
+          "prompt_tokens": 1108,
+          "completion_tokens": 140,
+          "total_tokens": 1248,
+          "charged_completion_tokens": 140
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "missing_curve_valid_history",
+    "equipment": 13,
+    "row": 46,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 4,
+    "tokens": 6693,
+    "usage_complete": true,
+    "seconds": 6.664,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "text_age_misinterpretation",
+        "unsupported_confidence",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 897,
+      "completion_tokens": 238,
+      "total_tokens": 1135,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1ba9f35959037f89fa4e3bdb247b",
+          "seconds": 1.945,
+          "prompt_tokens": 897,
+          "completion_tokens": 238,
+          "total_tokens": 1135,
+          "charged_completion_tokens": 238
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "pre_repair_history",
+    "equipment": 2,
+    "row": 105,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "pre_repair_history",
+    "equipment": 2,
+    "row": 105,
+    "mode": "multi_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 10,
+    "tokens": 11684,
+    "usage_complete": true,
+    "seconds": 55.813,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 1,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1118,
+      "completion_tokens": 111,
+      "total_tokens": 1229,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1bbae23eb2147f7880b01a4791c9",
+          "seconds": 1.209,
+          "prompt_tokens": 1118,
+          "completion_tokens": 111,
+          "total_tokens": 1229,
+          "charged_completion_tokens": 111
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "pre_repair_history",
+    "equipment": 2,
+    "row": 105,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 5,
+    "tokens": 7689,
+    "usage_complete": true,
+    "seconds": 6.683,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 1,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "unsupported_severity"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 828,
+      "completion_tokens": 96,
+      "total_tokens": 924,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1bc21cd1949d895d216deec1920f",
+          "seconds": 1.755,
+          "prompt_tokens": 828,
+          "completion_tokens": 96,
+          "total_tokens": 924,
+          "charged_completion_tokens": 96
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "pre_repair_history",
+    "equipment": 41,
+    "row": 45,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "pre_repair_history",
+    "equipment": 41,
+    "row": 45,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 6,
+    "tokens": 10810,
+    "usage_complete": true,
+    "seconds": 8.038,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "other_evidence_contradiction",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 878,
+      "completion_tokens": 165,
+      "total_tokens": 1043,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1ba68a008ab3076a4007aec35567",
+          "seconds": 2.285,
+          "prompt_tokens": 878,
+          "completion_tokens": 165,
+          "total_tokens": 1043,
+          "charged_completion_tokens": 165
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "pre_repair_history",
+    "equipment": 41,
+    "row": 45,
+    "mode": "multi_agent",
+    "process_completed": false,
+    "error": "达到 API 请求预算。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 12,
+    "tokens": 11673,
+    "usage_complete": true,
+    "seconds": 23.52,
+    "independent_contexts": 4,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 3,
+    "tool_errors": 1,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "history_validity_contradiction",
+        "unsupported_repair_claim"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 933,
+      "completion_tokens": 209,
+      "total_tokens": 1142,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1bc0ebfcb65753e0612475a0c065",
+          "seconds": 4.605,
+          "prompt_tokens": 933,
+          "completion_tokens": 209,
+          "total_tokens": 1142,
+          "charged_completion_tokens": 209
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "pre_repair_history",
+    "equipment": 41,
+    "row": 45,
+    "mode": "multi_agent_rescue",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 15,
+    "tokens": 19969,
+    "usage_complete": true,
+    "seconds": 29.166,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 4,
+    "tool_errors": 1,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "unsupported_severity",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1404,
+      "completion_tokens": 169,
+      "total_tokens": 1573,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1be23a7acc973717dbf96cd3deb8",
+          "seconds": 2.484,
+          "prompt_tokens": 1404,
+          "completion_tokens": 169,
+          "total_tokens": 1573,
+          "charged_completion_tokens": 169
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "pre_repair_history",
+    "equipment": 13,
+    "row": 118,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "pre_repair_history",
+    "equipment": 13,
+    "row": 118,
+    "mode": "multi_agent",
+    "process_completed": false,
+    "error": "达到 API 请求预算。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 12,
+    "tokens": 12251,
+    "usage_complete": true,
+    "seconds": 19.909,
+    "independent_contexts": 4,
+    "completed_evidence_roles": [
+      "text"
+    ],
+    "validation_rejections": 4,
+    "tool_errors": 3,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "unsupported_confidence",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1033,
+      "completion_tokens": 217,
+      "total_tokens": 1250,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1bbfc6fea0386eedaf4514299ba1",
+          "seconds": 6.87,
+          "prompt_tokens": 1033,
+          "completion_tokens": 217,
+          "total_tokens": 1250,
+          "charged_completion_tokens": 217
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "pre_repair_history",
+    "equipment": 13,
+    "row": 118,
+    "mode": "multi_agent_rescue",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 10,
+    "tokens": 11558,
+    "usage_complete": true,
+    "seconds": 17.735,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 1,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "other_evidence_contradiction",
+        "unsupported_repair_claim",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1082,
+      "completion_tokens": 112,
+      "total_tokens": 1194,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1bd8e12b7b2b33f6c9000f347926",
+          "seconds": 1.764,
+          "prompt_tokens": 1082,
+          "completion_tokens": 112,
+          "total_tokens": 1194,
+          "charged_completion_tokens": 112
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "pre_repair_history",
+    "equipment": 13,
+    "row": 118,
+    "mode": "single_agent",
+    "process_completed": false,
+    "error": "单 Agent 未在预算内完成流程。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 9,
+    "tokens": 20981,
+    "usage_complete": true,
+    "seconds": 17.985,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": false,
+      "reason": "no accepted prose",
+      "findings": []
+    },
+    "screen_usage": {}
+  },
+  {
+    "stratum": "no_image_history",
+    "equipment": 41,
+    "row": 1,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "no_image_history",
+    "equipment": 41,
+    "row": 1,
+    "mode": "multi_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 10,
+    "tokens": 12482,
+    "usage_complete": true,
+    "seconds": 23.933,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 1,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "text_age_misinterpretation",
+        "unsupported_repair_claim",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1321,
+      "completion_tokens": 214,
+      "total_tokens": 1535,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1bfde00f413ebdceb65a62bfc114",
+          "seconds": 1.807,
+          "prompt_tokens": 1321,
+          "completion_tokens": 214,
+          "total_tokens": 1535,
+          "charged_completion_tokens": 214
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "no_image_history",
+    "equipment": 41,
+    "row": 1,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 4,
+    "tokens": 6237,
+    "usage_complete": true,
+    "seconds": 8.971,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 805,
+      "completion_tokens": 118,
+      "total_tokens": 923,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1c08cd8db8145560b219e7f8a09e",
+          "seconds": 1.312,
+          "prompt_tokens": 805,
+          "completion_tokens": 118,
+          "total_tokens": 923,
+          "charged_completion_tokens": 118
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "no_image_history",
+    "equipment": 13,
+    "row": 1,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "no_image_history",
+    "equipment": 13,
+    "row": 1,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 5,
+    "tokens": 8144,
+    "usage_complete": true,
+    "seconds": 8.109,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 785,
+      "completion_tokens": 66,
+      "total_tokens": 851,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1bccf4ed17c27b94dbc3a11f5f15",
+          "seconds": 1.397,
+          "prompt_tokens": 785,
+          "completion_tokens": 66,
+          "total_tokens": 851,
+          "charged_completion_tokens": 66
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "no_image_history",
+    "equipment": 13,
+    "row": 1,
+    "mode": "multi_agent",
+    "process_completed": false,
+    "error": "达到 API 请求预算。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 12,
+    "tokens": 12163,
+    "usage_complete": true,
+    "seconds": 25.605,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 3,
+    "tool_errors": 1,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "history_validity_contradiction",
+        "unsupported_confidence",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 977,
+      "completion_tokens": 208,
+      "total_tokens": 1185,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1be701588efa05179d195600300a",
+          "seconds": 2.511,
+          "prompt_tokens": 977,
+          "completion_tokens": 208,
+          "total_tokens": 1185,
+          "charged_completion_tokens": 208
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "no_image_history",
+    "equipment": 13,
+    "row": 1,
+    "mode": "multi_agent_rescue",
+    "process_completed": false,
+    "error": "监督 Agent 未在预算内完成流程。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 20,
+    "tokens": 20833,
+    "usage_complete": true,
+    "seconds": 30.459,
+    "independent_contexts": 6,
+    "completed_evidence_roles": [
+      "numeric"
+    ],
+    "validation_rejections": 7,
+    "tool_errors": 6,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "text_age_misinterpretation",
+        "unsupported_confidence",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 817,
+      "completion_tokens": 163,
+      "total_tokens": 980,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1c09caf72246f6e5fb119e631d66",
+          "seconds": 2.38,
+          "prompt_tokens": 817,
+          "completion_tokens": 163,
+          "total_tokens": 980,
+          "charged_completion_tokens": 163
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "no_image_history",
+    "equipment": 49,
+    "row": 1,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "no_image_history",
+    "equipment": 49,
+    "row": 1,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 5,
+    "tokens": 8540,
+    "usage_complete": true,
+    "seconds": 16.348,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "history_validity_contradiction",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 964,
+      "completion_tokens": 202,
+      "total_tokens": 1166,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1bfdb911b710ea64493894bd55ac",
+          "seconds": 3.052,
+          "prompt_tokens": 964,
+          "completion_tokens": 202,
+          "total_tokens": 1166,
+          "charged_completion_tokens": 202
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "no_image_history",
+    "equipment": 49,
+    "row": 1,
+    "mode": "multi_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 10,
+    "tokens": 12508,
+    "usage_complete": true,
+    "seconds": 17.346,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric"
+    ],
+    "validation_rejections": 2,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "other_evidence_contradiction",
+        "unsupported_confidence"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1174,
+      "completion_tokens": 163,
+      "total_tokens": 1337,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1c12e00e04dd1a6c6a00b658d7d4",
+          "seconds": 3.043,
+          "prompt_tokens": 1174,
+          "completion_tokens": 163,
+          "total_tokens": 1337,
+          "charged_completion_tokens": 163
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "stale_text",
+    "equipment": 2,
+    "row": 119,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "stale_text",
+    "equipment": 2,
+    "row": 119,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 4,
+    "tokens": 6688,
+    "usage_complete": true,
+    "seconds": 16.707,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 843,
+      "completion_tokens": 129,
+      "total_tokens": 972,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1c1c2beb69a6413851106b44b0a5",
+          "seconds": 1.496,
+          "prompt_tokens": 843,
+          "completion_tokens": 129,
+          "total_tokens": 972,
+          "charged_completion_tokens": 129
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "stale_text",
+    "equipment": 2,
+    "row": 119,
+    "mode": "multi_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 10,
+    "tokens": 12187,
+    "usage_complete": true,
+    "seconds": 15.192,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 1,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "other_evidence_contradiction"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1194,
+      "completion_tokens": 207,
+      "total_tokens": 1401,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1c2d8cc1e238fc5457eea3116c9b",
+          "seconds": 2.009,
+          "prompt_tokens": 1194,
+          "completion_tokens": 207,
+          "total_tokens": 1401,
+          "charged_completion_tokens": 207
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "stale_text",
+    "equipment": 47,
+    "row": 19,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "stale_text",
+    "equipment": 47,
+    "row": 19,
+    "mode": "multi_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 11,
+    "tokens": 13708,
+    "usage_complete": true,
+    "seconds": 20.053,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 2,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "other_evidence_contradiction",
+        "text_age_misinterpretation",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1147,
+      "completion_tokens": 261,
+      "total_tokens": 1408,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1c297a0b74c85e73cec4e11097a7",
+          "seconds": 2.638,
+          "prompt_tokens": 1147,
+          "completion_tokens": 261,
+          "total_tokens": 1408,
+          "charged_completion_tokens": 261
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "stale_text",
+    "equipment": 47,
+    "row": 19,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 4,
+    "tokens": 6641,
+    "usage_complete": true,
+    "seconds": 7.425,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 789,
+      "completion_tokens": 113,
+      "total_tokens": 902,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1c3476154ecd0bbe249b7eb546f8",
+          "seconds": 1.67,
+          "prompt_tokens": 789,
+          "completion_tokens": 113,
+          "total_tokens": 902,
+          "charged_completion_tokens": 113
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "no_image_history",
+    "equipment": 12,
+    "row": 1,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "no_image_history",
+    "equipment": 12,
+    "row": 1,
+    "mode": "multi_agent",
+    "process_completed": false,
+    "error": "达到 API 请求预算。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 12,
+    "tokens": 11463,
+    "usage_complete": true,
+    "seconds": 23.047,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 3,
+    "tool_errors": 1,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "history_validity_contradiction",
+        "other_evidence_contradiction",
+        "unsupported_confidence"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 959,
+      "completion_tokens": 100,
+      "total_tokens": 1059,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1c21f15576c51556ca87734f33b8",
+          "seconds": 1.478,
+          "prompt_tokens": 959,
+          "completion_tokens": 100,
+          "total_tokens": 1059,
+          "charged_completion_tokens": 100
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "no_image_history",
+    "equipment": 12,
+    "row": 1,
+    "mode": "multi_agent_rescue",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 9,
+    "tokens": 10734,
+    "usage_complete": true,
+    "seconds": 11.138,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1211,
+      "completion_tokens": 42,
+      "total_tokens": 1253,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1c2e24ccf104336e693a7d50119e",
+          "seconds": 0.879,
+          "prompt_tokens": 1211,
+          "completion_tokens": 42,
+          "total_tokens": 1253,
+          "charged_completion_tokens": 42
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "no_image_history",
+    "equipment": 12,
+    "row": 1,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 5,
+    "tokens": 8364,
+    "usage_complete": true,
+    "seconds": 12.985,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "unsupported_confidence",
+        "unsupported_severity",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 824,
+      "completion_tokens": 171,
+      "total_tokens": 995,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1c3c109574e0fec9fb1f1f561fd3",
+          "seconds": 8.195,
+          "prompt_tokens": 824,
+          "completion_tokens": 171,
+          "total_tokens": 995,
+          "charged_completion_tokens": 171
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "stale_text",
+    "equipment": 27,
+    "row": 132,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "stale_text",
+    "equipment": 27,
+    "row": 132,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 5,
+    "tokens": 9090,
+    "usage_complete": true,
+    "seconds": 9.226,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "other_evidence_contradiction",
+        "unsupported_confidence",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 929,
+      "completion_tokens": 151,
+      "total_tokens": 1080,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1c3955836ffa3c2a996b0c4feb96",
+          "seconds": 2.237,
+          "prompt_tokens": 929,
+          "completion_tokens": 151,
+          "total_tokens": 1080,
+          "charged_completion_tokens": 151
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "stale_text",
+    "equipment": 27,
+    "row": 132,
+    "mode": "multi_agent",
+    "process_completed": false,
+    "error": "达到 API 请求预算。",
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 12,
+    "tokens": 12921,
+    "usage_complete": true,
+    "seconds": 22.979,
+    "independent_contexts": 4,
+    "completed_evidence_roles": [
+      "maintenance",
+      "visual"
+    ],
+    "validation_rejections": 4,
+    "tool_errors": 1,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1086,
+      "completion_tokens": 129,
+      "total_tokens": 1215,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1c530bc6d2afa4e44b7c0d65fc57",
+          "seconds": 1.454,
+          "prompt_tokens": 1086,
+          "completion_tokens": 129,
+          "total_tokens": 1215,
+          "charged_completion_tokens": 129
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "stale_text",
+    "equipment": 27,
+    "row": 132,
+    "mode": "multi_agent_rescue",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 14,
+    "tokens": 16013,
+    "usage_complete": true,
+    "seconds": 24.74,
+    "independent_contexts": 4,
+    "completed_evidence_roles": [
+      "numeric",
+      "text"
+    ],
+    "validation_rejections": 3,
+    "tool_errors": 1,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "other_evidence_contradiction",
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1073,
+      "completion_tokens": 153,
+      "total_tokens": 1226,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1c6d9cef7b8003c3dd7878fad4a3",
+          "seconds": 13.635,
+          "prompt_tokens": 1073,
+          "completion_tokens": 153,
+          "total_tokens": 1226,
+          "charged_completion_tokens": 153
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "stale_text",
+    "equipment": 13,
+    "row": 39,
+    "mode": "deterministic_control",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 0,
+    "tokens": 0,
+    "usage_complete": true,
+    "seconds": 0.0,
+    "independent_contexts": 0,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false
+  },
+  {
+    "stratum": "stale_text",
+    "equipment": 13,
+    "row": 39,
+    "mode": "multi_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 10,
+    "tokens": 11773,
+    "usage_complete": true,
+    "seconds": 55.166,
+    "independent_contexts": 3,
+    "completed_evidence_roles": [
+      "numeric",
+      "visual"
+    ],
+    "validation_rejections": 1,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 1180,
+      "completion_tokens": 140,
+      "total_tokens": 1320,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1c6dfcf0c970cdc2273b1d3e1408",
+          "seconds": 2.639,
+          "prompt_tokens": 1180,
+          "completion_tokens": 140,
+          "total_tokens": 1320,
+          "charged_completion_tokens": 140
+        }
+      ]
+    }
+  },
+  {
+    "stratum": "stale_text",
+    "equipment": 13,
+    "row": 39,
+    "mode": "single_agent",
+    "process_completed": true,
+    "error": null,
+    "prediction_consistent": true,
+    "interval_consistent": true,
+    "requests": 5,
+    "tokens": 10626,
+    "usage_complete": true,
+    "seconds": 11.575,
+    "independent_contexts": 1,
+    "completed_evidence_roles": [
+      "maintenance",
+      "numeric",
+      "retrieval",
+      "text",
+      "visual"
+    ],
+    "validation_rejections": 0,
+    "tool_errors": 0,
+    "budget_censored": false,
+    "language_semantically_verified": false,
+    "language_screen": {
+      "screen_completed": true,
+      "findings": [
+        "unsupported_trend"
+      ],
+      "ground_truth": false
+    },
+    "screen_usage": {
+      "requests": 1,
+      "successful_responses": 1,
+      "max_requests": 2,
+      "prompt_tokens": 979,
+      "completion_tokens": 182,
+      "total_tokens": 1161,
+      "usage_complete": true,
+      "completion_budget": 4096,
+      "reserved_failed_completion_tokens": 0,
+      "calls": [
+        {
+          "role": "independent_language_screen",
+          "request_id": "071c1c7c13097a4c1cc3744096b21c1d",
+          "seconds": 1.602,
+          "prompt_tokens": 979,
+          "completion_tokens": 182,
+          "total_tokens": 1161,
+          "charged_completion_tokens": 182
+        }
+      ]
+    }
+  }
+]

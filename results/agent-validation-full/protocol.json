@@ -1,0 +1,144 @@
+{
+  "cases": [
+    {
+      "stratum": "visible_short_horizon",
+      "equipment": 49,
+      "row": 165
+    },
+    {
+      "stratum": "visible_short_horizon",
+      "equipment": 34,
+      "row": 39
+    },
+    {
+      "stratum": "visible_short_horizon",
+      "equipment": 47,
+      "row": 10
+    },
+    {
+      "stratum": "visible_short_horizon",
+      "equipment": 2,
+      "row": 72
+    },
+    {
+      "stratum": "visible_long_horizon",
+      "equipment": 13,
+      "row": 144
+    },
+    {
+      "stratum": "visible_long_horizon",
+      "equipment": 34,
+      "row": 74
+    },
+    {
+      "stratum": "visible_long_horizon",
+      "equipment": 5,
+      "row": 17
+    },
+    {
+      "stratum": "visible_long_horizon",
+      "equipment": 41,
+      "row": 61
+    },
+    {
+      "stratum": "missing_curve_valid_history",
+      "equipment": 11,
+      "row": 23
+    },
+    {
+      "stratum": "missing_curve_valid_history",
+      "equipment": 47,
+      "row": 63
+    },
+    {
+      "stratum": "missing_curve_valid_history",
+      "equipment": 5,
+      "row": 43
+    },
+    {
+      "stratum": "missing_curve_valid_history",
+      "equipment": 13,
+      "row": 46
+    },
+    {
+      "stratum": "pre_repair_history",
+      "equipment": 5,
+      "row": 106
+    },
+    {
+      "stratum": "pre_repair_history",
+      "equipment": 2,
+      "row": 105
+    },
+    {
+      "stratum": "pre_repair_history",
+      "equipment": 41,
+      "row": 45
+    },
+    {
+      "stratum": "pre_repair_history",
+      "equipment": 13,
+      "row": 118
+    },
+    {
+      "stratum": "no_image_history",
+      "equipment": 13,
+      "row": 1
+    },
+    {
+      "stratum": "no_image_history",
+      "equipment": 41,
+      "row": 1
+    },
+    {
+      "stratum": "no_image_history",
+      "equipment": 49,
+      "row": 1
+    },
+    {
+      "stratum": "no_image_history",
+      "equipment": 12,
+      "row": 1
+    },
+    {
+      "stratum": "stale_text",
+      "equipment": 2,
+      "row": 119
+    },
+    {
+      "stratum": "stale_text",
+      "equipment": 47,
+      "row": 19
+    },
+    {
+      "stratum": "stale_text",
+      "equipment": 27,
+      "row": 132
+    },
+    {
+      "stratum": "stale_text",
+      "equipment": 13,
+      "row": 39
+    }
+  ],
+  "model_sha256": "c352efc42834daf9ad5b46c68b8040815e4332698464e8f1fdafc9d8f7db6102",
+  "api_model": "MiniMax-M3.1-Flash-Preview",
+  "seed": 20261012,
+  "paired_modes": [
+    "deterministic_control",
+    "single_agent",
+    "multi_agent"
+  ],
+  "default_requests_per_session": 12,
+  "separate_rescue_requests_per_session": 20,
+  "completion_tokens_per_session": 24000,
+  "aggregate_conservative_admission_budget": 2000000,
+  "workers": 3,
+  "selection": "Four distinct model-held-out equipment per quality stratum; causal inputs only; unique equipment/row pairs across strata.",
+  "limitations": "Exploratory integration study; strata overlap in equipment. Fixed numeric model across modes. Independent language screen is model-assisted and has no gold labels. Rescue results are separate from default results.",
+  "source_sha256": {
+    "agents.py": "5baf5740e7880fb40dc063d6bfb55db1e690256f4b5d113d24d2496c188a6365",
+    "agent_benchmark.py": "6831f5b33f22798cc90aeaeeb0954545bc51b595924d39d2b613470303d931eb",
+    "full_agent_benchmark.py": "a7ae3e5765d61f9190329c82f974ed694e6ad851c9e9b95eebe556a32fc29f7d"
+  }
+}

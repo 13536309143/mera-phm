@@ -1,0 +1,36 @@
+{
+  "cases": [
+    {
+      "stratum": "visible_curve",
+      "equipment": 27,
+      "row": 2
+    },
+    {
+      "stratum": "missing_curve_valid_history",
+      "equipment": 27,
+      "row": 6
+    },
+    {
+      "stratum": "pre_repair_history",
+      "equipment": 27,
+      "row": 10
+    }
+  ],
+  "modes": [
+    "deterministic_control",
+    "single_agent",
+    "multi_agent"
+  ],
+  "model_sha256": "c352efc42834daf9ad5b46c68b8040815e4332698464e8f1fdafc9d8f7db6102",
+  "api_model": "MiniMax-M3.1-Flash-Preview",
+  "approximate_total_token_budget": 50000,
+  "selection": "Causal quality strata on model-held-out devices; no future labels used.",
+  "limitations": "Small exploratory integration sample; numeric predictor fixed across modes. Semantic language accuracy not established.",
+  "source_sha256_after_execution_before_release_formatting": {
+    "agents.py": "91b584855250f69fdb0e57109615badeb89ed9a6e919b66ccbac46ae20a4b6d9",
+    "agent_benchmark.py": "930d04d2c2197169443d3611140c16cb16206ecc79584a2e3b6332b8243f1ffe",
+    "models.py": "0923eb66c612d8e2d1bbad6b2234dff57649168e784d3d8edd028648dfdfdb63",
+    "data.py": "353c7294c13e4d1b8919399c35e87a3c610c1b93320ac1a9e2bedac8f5e5135a"
+  },
+  "source_note": "The censorship annotation was added after execution; measured ledger entries are unchanged."
+}

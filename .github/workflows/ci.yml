@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13", "3.14"]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+      - name: Install
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+          python -m pip install ruff==0.14.1
+      - name: Static checks
+        run: |
+          ruff check prognostics tests scripts main.py
+          ruff format --check prognostics tests scripts main.py
+          python scripts/check_release.py
+      - name: Causal and agent protocol tests (no API or external dataset)
+        run: python -m unittest discover -s tests -v
+      - name: Clean-install demo
+        run: |
+          mera-phm demo
+          mera-phm predict --data data/demo --model artifacts/demo-model/model-bank.joblib --equipment 2 --row 8 --mode local
+      - name: Dependency integrity
+        run: python -m pip check
