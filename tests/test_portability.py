@@ -1,5 +1,8 @@
 import importlib.util
 import json
+import os
+import subprocess
+import sys
 import tempfile
 import unittest
 from pathlib import Path
@@ -15,6 +18,14 @@ spec.loader.exec_module(launcher)
 
 
 class PortabilityTests(unittest.TestCase):
+    def test_redirected_windows_encoding_accepts_chinese_output(self):
+        script = "from prognostics.runtime import configure_console; configure_console(); print('预测完成')"
+        env = {**os.environ, "PYTHONIOENCODING": "cp1252"}
+        process = subprocess.run(
+            [sys.executable, "-c", script], env=env, capture_output=True, check=True
+        )
+        self.assertEqual(process.stdout.decode("utf-8").strip(), "预测完成")
+
     def test_windows_and_macos_venv_paths(self):
         self.assertEqual(
             launcher.interpreter(Path("project"), True).as_posix(),

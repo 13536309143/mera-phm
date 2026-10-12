@@ -4,6 +4,7 @@ import importlib.util
 import json
 import os
 import platform
+import sys
 from urllib.parse import urlparse
 
 from dotenv import dotenv_values
@@ -15,6 +16,13 @@ EXPERIMENTS = {
     "neural_groupcv": "experiments/numerical/neural-groupcv/summary.json",
     "paired_api": "experiments/agents/paired-api/summary.json",
 }
+
+
+def configure_console():
+    """Keep Chinese CLI output readable in Windows terminals and redirected logs."""
+    for stream in [sys.stdout, sys.stderr]:
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8", errors="backslashreplace")
 
 
 def doctor_report(device="auto"):

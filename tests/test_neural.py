@@ -39,9 +39,30 @@ class NeuralTests(unittest.TestCase):
             joblib.dump(self.model, path)
             restored = joblib.load(path)
             self.assertIsNone(restored._network)
-            np.testing.assert_allclose(
-                self.model.predict(self.x), restored.predict(self.x), atol=1e-4
-            )
+            original, replay = self.model.predict(self.x), restored.predict(self.x)
+            if not np.allclose(original, replay, atol=1e-4):
+                import torch
+
+                left = torch.from_numpy((self.x - self.model.x_mean) / self.model.x_scale)
+                right = left.to(restored.inference_device)
+                with torch.inference_mode():
+                    for i, (cpu_layer, restored_layer) in enumerate(
+                        zip(self.model._network, restored._network)
+                    ):
+                        left, right = cpu_layer(left), restored_layer(right)
+                        print(
+                            "portable layer",
+                            i,
+                            type(cpu_layer).__name__,
+                            "max difference",
+                            float((left - right.cpu()).abs().max()),
+                        )
+                        if hasattr(cpu_layer, "weight"):
+                            print(
+                                "weight difference",
+                                float((cpu_layer.weight - restored_layer.weight.cpu()).abs().max()),
+                            )
+            np.testing.assert_allclose(original, replay, atol=1e-4)
 
     def test_unavailable_gpu_rejected_and_auto_falls_back(self):
         with patch(

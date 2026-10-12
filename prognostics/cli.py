@@ -103,6 +103,9 @@ def agent_control(bank, root, out, api=False, cases=1, model_identity="default")
 
 
 def main():
+    from .runtime import configure_console
+
+    configure_console()
     parser = argparse.ArgumentParser(
         description="MERA-PHM: multimodal degradation prediction and auditable agent tools"
     )
