@@ -10,7 +10,9 @@ ROOT = Path(__file__).resolve().parent.parent
 
 
 def main():
-    result = json.loads((ROOT / "results/agent-validation-full/summary.json").read_text())
+    result = json.loads(
+        (ROOT / "experiments/agents/paired-api/summary.json").read_text(encoding="utf-8")
+    )
     modes = ["deterministic_control", "single_agent", "multi_agent"]
     labels = ["Local control", "Single Agent", "Multi-Agent"]
     aggregate = result["aggregate"]

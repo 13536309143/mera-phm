@@ -215,12 +215,20 @@ def metric_with_radius(y, p, groups, radius):
     return metric
 
 
-def run_benchmark(root, out, seed=20261012, trees=100):
+def run_benchmark(root, out, seed=20261012, trees=100, backend="trees", device="cpu", epochs=80):
     out = Path(out)
     out.mkdir(parents=True, exist_ok=False)
     rows, y = load_dataset(root)
     groups = np.array([r["equipment"] for r in rows])
     source = Path(__file__).parent
+    neural_runtime = None
+    if backend == "neural":
+        from .neural import resolve_device, torch_runtime
+
+        neural_runtime = {
+            "torch": torch_runtime().__version__,
+            "training_device": resolve_device(device),
+        }
     protocol = {
         "name": "MERA-PHM five-fold equipment validation",
         "created_utc": datetime.now(timezone.utc).isoformat(),
@@ -229,6 +237,13 @@ def run_benchmark(root, out, seed=20261012, trees=100):
         "devices": 50,
         "samples": len(rows),
         "expert_trees": trees,
+        "backend": backend,
+        "neural_runtime": neural_runtime,
+        "requested_device": device,
+        "neural_epochs": epochs if backend == "neural" else None,
+        "neural_architecture": "standardized feature MLP 64/32/GELU, AdamW lr=0.001, batch=512; CPU error router"
+        if backend == "neural"
+        else None,
         "per_fold_devices": {"training": 25, "routing": 5, "calibration": 10, "test": 10},
         "baseline_label_budget": "25-device and 30-device controls; all share vocabulary fitted on 25 training devices.",
         "baseline_hyperparameters": {
@@ -259,7 +274,7 @@ def run_benchmark(root, out, seed=20261012, trees=100):
     # Persist the protocol before evaluating any folds.
     json_write(out / "protocol.json", protocol)
     with ZipFile(out / "numerical-source-snapshot.zip", "w", ZIP_DEFLATED) as snapshot:
-        for name in ["data.py", "models.py", "research.py", "benchmark.py"]:
+        for name in ["data.py", "models.py", "research.py", "benchmark.py", "neural.py"]:
             snapshot.write(source / name, "prognostics/" + name)
     methods = list(dict.fromkeys(EXPERTS + POLICIES + BASELINES + ABLATIONS))
     oof = {name: np.zeros(len(rows)) for name in methods}
@@ -291,7 +306,7 @@ def run_benchmark(root, out, seed=20261012, trees=100):
                 if a != b:
                     assert not set(devices[a]) & set(devices[b])
         print(f"Fold {fold}/5: test devices {test_devices}", flush=True)
-        bank = ModelBank(seed + fold, trees).fit(rows, y, split)
+        bank = ModelBank(seed + fold, trees, backend, device, epochs).fit(rows, y, split)
         baseline = fit_baselines(bank, rows, y, split, seed + fold, trees)
         test = [rows[i] for i in split["test"]]
         cal = [rows[i] for i in split["calibration"]]
@@ -308,7 +323,7 @@ def run_benchmark(root, out, seed=20261012, trees=100):
             fold_metrics[name] = metric_with_radius(ty, p, tg, np.full(len(test), radius))
         for variant in ABLATIONS:
             altered = ablated_rows(rows, variant)
-            ablation = ModelBank(seed + fold, trees).fit(altered, y, split)
+            ablation = ModelBank(seed + fold, trees, backend, device, epochs).fit(altered, y, split)
             atest = [altered[i] for i in split["test"]]
             p = ablation.policy_batch(atest, "learned_router")
             radius = ablation.radii["learned_router"]["radius"]
@@ -363,7 +378,9 @@ def run_benchmark(root, out, seed=20261012, trees=100):
     # Raw targets/predictions remain in ignored local artifacts, never in published results.
     private = Path.cwd() / "artifacts"
     private.mkdir(exist_ok=True)
-    np.savez_compressed(private / "benchmark-oof.npz", truth=y, equipment=groups, **oof)
+    np.savez_compressed(
+        private / f"benchmark-{backend}-{seed}-{out.name}-oof.npz", truth=y, equipment=groups, **oof
+    )
     report = [
         "# MERA-PHM equipment-grouped validation",
         "",

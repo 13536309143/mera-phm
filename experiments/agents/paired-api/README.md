@@ -15,9 +15,9 @@ The rescue column is a **fresh, separate run with up to 20 requests**, not a rep
 
 Multi-Agent orchestration completed less reliably and consumed more tokens than the single-Agent control in this sample. Independent model-assisted screening flagged possible evidence contradictions in 14/22 screened single-Agent runs and 20/24 screened default multi-Agent runs. **These are screening flags, not adjudicated error rates or measured semantic accuracy.** Digit rejection prevents invented numeric prose but does not prove qualitative factual correctness. This release is a research prototype; reliable industrial Agent interpretation is not established.
 
-![Real API completion and cost](../../docs/assets/agent-validation.png)
+![Real API completion and cost](../../../docs/assets/agent-validation.png)
 
-See the [expanded protocol and complete ledger](summary.json). The earlier [48,170-token budget-censored pilot](../agent-validation/README.md) remains separate and is not pooled with this study.
+See the [expanded protocol and complete ledger](summary.json). The earlier [48,170-token budget-censored pilot](../../archive/agent-pilot/README.md) remains separate and is not pooled with this study.
 
 ## Per-stratum default completion
 

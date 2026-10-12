@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "If you use this research software, please cite MERA-PHM and the original dataset paper."
 type: software
 title: "MERA-PHM: Maintenance-aware Evidence Routing for Agentic Prognostics"
-version: 1.0.0
+version: 1.1.0
 date-released: 2026-10-12
 license: MIT
 authors:

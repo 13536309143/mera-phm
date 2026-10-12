@@ -40,6 +40,14 @@ Multi Agent provides a supervisor and eight available specialist responsibilitie
 
 Tools return supervised predictions, causal quality features, and completed training-equipment references. There are no arbitrary-file, shell, key, physical-control or current-query-target tools. Numeric outputs are never parsed from prose. The digit guard rejects Unicode decimal digits but cannot detect every spelled-out number or prove semantic correctness. Original qualitative prose remains unverified; the default report uses canonical fields and a code-generated factual summary.
 
+## Neural backend and computation
+
+The optional PyTorch backend replaces each supervised ExtraTrees expert with a standardized feature MLP: input → 64/GELU → 32/GELU → scalar output. Input and target normalization are fitted on expert-training devices only. Training uses AdamW, learning rate 0.001, weight decay 0.001, batch size 512 and 80 fixed epochs. No test- or calibration-label early stopping is used. The error gate remains an ExtraTrees regressor trained on the independent routing group.
+
+CPU, CUDA and MPS are explicit runtime choices; `auto` prefers CUDA, then MPS, then CPU. Checkpoints carry NumPy CPU weights and restore an inference network on the available runtime. Features and the grouped calibration procedure are unchanged between backends. The curve branch uses descriptors and the text branch uses TF-IDF; the neural backend is a feature MLP comparison.
+
+The added five-fold neural study uses the same partitions and controls as the tree study. MLP static-fusion MAE is 7.1451, routed MAE is 6.6297, versus tree routing 2.6919. It does not establish a neural accuracy advantage; tree models remain the default. The executed study source and its environment are recorded under `experiments/numerical/neural-groupcv`.
+
 ## Locked numerical evaluation
 
 Five shuffled GroupKFold partitions test every equipment exactly once. Each fold holds out 10 test devices; the other 40 are randomly assigned to 25 expert training, 5 gate training and 10 calibration. Vocabulary is fitted only on the 25 training devices. Fixed settings are persisted before evaluating folds; no new hyperparameter search is hidden inside this run.
@@ -50,7 +58,7 @@ The **whole-feature freshness ablation** retrains experts and gates after zeroin
 
 Seven stress conditions include complete image outage, complete text outage, both, stale history, additional random image masking, contiguous image outage and descriptor perturbation. Random and block masks rebuild memory from surviving past images. Perturbation uses training-feature standard deviation, not test distribution statistics, and is not raw pixel/sensor corruption.
 
-[Aggregate results](../results/validation/README.md), [parameters and fingerprint](../results/validation/protocol.json), each fold, and the original numerical execution-source snapshot are published. Raw labels and per-row predictions stay in ignored local artifacts. Repeated equipment-layer bootstrap estimates are descriptive: models share training sets, and this dataset had already been explored.
+[Aggregate results](../experiments/numerical/tree-groupcv/README.md), [parameters and fingerprint](../experiments/numerical/tree-groupcv/protocol.json), each fold, and the original numerical execution-source snapshot are published. Raw labels and per-row predictions stay in ignored local artifacts. Repeated equipment-layer bootstrap estimates are descriptive: models share training sets, and this dataset had already been explored.
 
 ## Findings and negative results
 
@@ -61,7 +69,7 @@ Seven stress conditions include complete image outage, complete text outage, bot
 - Additional random image masking produces router MAE 6.257, worse than the numeric/text expert's 3.998. The strong static baseline also wins under descriptor perturbation. Shifted historical information can still mislead the gate.
 - Router interval width averages 64.15 adu, with 94% observed whole-equipment coverage. The width prevents interpreting coverage as precise decision support.
 
-Earlier repeated-split experiments are preserved separately under `results/pilot`; their better figures are not substituted for the release headline. Eligibility rules were changed after early stress-test inspection. All reported results remain exploratory internal validation on the same synthetic dataset, not pristine external confirmation.
+Earlier repeated-split experiments are preserved separately under `experiments/archive/numerical-pilot`; their better figures are not substituted for the release headline. Eligibility rules were changed after early stress-test inspection. All reported results remain exploratory internal validation on the same synthetic dataset, not pristine external confirmation.
 
 ## Agent study and software verification
 
@@ -80,7 +88,7 @@ Multi-Agent orchestration completed less reliably and consumed more tokens than 
 
 ![Real API completion and cost](assets/agent-validation.png)
 
-See the [expanded protocol and complete ledger](../results/agent-validation-full/README.md). The earlier [48,170-token budget-censored pilot](../results/agent-validation/README.md) remains separate and is not pooled with this study.
+See the [expanded protocol and complete ledger](../experiments/agents/paired-api/README.md). The earlier [48,170-token budget-censored pilot](../experiments/archive/agent-pilot/README.md) remains separate and is not pooled with this study.
 
 Offline tests use original temporary fixtures and scripted provider responses to cover causal invariance, calibration/group boundaries, dropped-image memory leakage, unauthorized tools, invalid sequencing, digit rejection, provider error sanitization, unknown usage and budgets. They are implementation verification, not extra real LLM robustness trials. Fresh-install demo execution checks packaging and dashboard assets.
 

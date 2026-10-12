@@ -8,8 +8,8 @@ from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
 
-from prognostics.agent_benchmark import ExperimentBudget
 from prognostics.agents import AgentSession
+from prognostics.budgets import ExperimentBudget
 from prognostics.data import load_dataset, online_sample
 from prognostics.demo import generate_demo
 from prognostics.models import ModelBank

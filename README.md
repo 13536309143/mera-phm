@@ -1,164 +1,262 @@
 # MERA-PHM
 
-[![CI](https://github.com/13536309143/mera-phm/actions/workflows/ci.yml/badge.svg)](https://github.com/13536309143/mera-phm/actions/workflows/ci.yml) · [MIT](LICENSE) · Python ≥ 3.12
-### Maintenance-aware Evidence Routing for Agentic Prognostics
+### Maintenance-aware multimodal prognostics and auditable Agent collaboration
 
-[English](README.md) · [简体中文](README.zh-CN.md) · [Validation results](results/validation/README.md) · [Research protocol](docs/research-design.md)
+[English](README.md) · [简体中文](README.zh-CN.md) · [Experiment index](experiments/README.md) · [Research design](docs/research-design.md)
 
-![Python](https://img.shields.io/badge/Python-3.12%2B-blue)
-![License](https://img.shields.io/badge/License-MIT-green)
-![Scope](https://img.shields.io/badge/Scope-research%20prototype-orange)
+[![CI](https://github.com/13536309143/mera-phm/actions/workflows/ci.yml/badge.svg)](https://github.com/13536309143/mera-phm/actions/workflows/ci.yml) · MIT · Python 3.12+
 
-**A CPU-first research system for predicting the degradation level at the next scheduled inspection from numerical records, transient-curve images, and inspection text.** MERA-PHM combines maintenance-aware evidence memory, availability-constrained model routing, equipment-group prediction intervals, and optional auditable LLM tool orchestration.
+**Predict degradation at the next scheduled inspection from numerical records, transient-curve images, inspection text and maintenance history, with calibrated intervals, evidence provenance and Agent traces.**
 
-The numerical forecaster and the language agents have separate responsibilities. **Agents inspect and explain evidence; they do not generate or overwrite the canonical regression value.** This is feature-based multimodal learning with ExtraTrees and TF-IDF, not a reproduction of the source paper's neural network or direct image input to a vision-language model.
+MERA-PHM treats maintenance as a change in evidence validity. It connects trained modality experts, event-aware historical memory, error routing and LLM tool collaboration in one workflow. CPU tree models are the default; an optional PyTorch backend supports CPU, CUDA and MPS.
 
-## What the project provides
+## 1. Problem and outputs
 
-- Causal observation prefixes and an offline-only target loader.
-- Eight modality/fusion experts, learned error routing, and explicit fallbacks for missing evidence.
-- Historical-image invalidation after maintenance, with image-age and text-change-age features.
-- Split-conformal intervals based on maximum residuals per calibration equipment trajectory.
-- Nine available Agent responsibilities with independent specialist contexts and restricted tools.
-- Deterministic control, a one-context single Agent, and dynamic multi-Agent orchestration.
-- Five equipment folds, matched-label baselines, full component ablations and seven causal stress conditions.
-- A local dashboard, reproducible CLI, original toy generator, credential checks and offline tests.
+Industrial observations are intermittent. An image may be missing, text may repeat an earlier inspection, and a pre-repair image may describe an equipment state that no longer exists. The most useful modality can also depend on the forecast horizon.
 
-## Quick start — no API or external dataset
+| Input | Processing | Result |
+|---|---|---|
+| Inspection horizon, repair time, cleaning counts | Numerical expert | Numerical prediction |
+| Transient-curve image | Geometric and statistical descriptors | Current image evidence |
+| Inspection record | TF-IDF and source-text tools | Text prediction and supporting evidence |
+| Past images, maintenance events, evidence ages | Event-aware memory | Historical evidence eligibility |
+| Expert predictions and quality state | Learned error routing and group calibration | Degradation value and interval |
+| Model/tool outputs | Single- or multi-Agent orchestration | Report, audit trace and API usage |
 
-```bash
-python3 -m venv .venv
-source .venv/bin/activate                 # Windows: .venv\Scripts\activate
-python -m pip install -e .
-mera-phm demo
-mera-phm predict --data data/demo --model artifacts/demo-model/model-bank.joblib --equipment 2 --row 8 --mode local
-mera-phm serve --data data/demo --model artifacts/demo-model/model-bank.joblib --open
-```
+Each prediction saves `result.json` and `report.md`. Degradation uses arbitrary degradation units (`adu`), and time uses arbitrary time units (`atu`). The target is the next scheduled inspection level.
 
-Open **http://127.0.0.1:8765**. The dashboard currently uses Chinese labels. `python main.py` accepts the same commands as `mera-phm`. The original toy generator verifies installation and software behavior; it is **not** the paper's simulator or evidence of industrial accuracy. Output directories must not already exist.
-
-The predictive models run on CPU; CUDA and local LLM deployment are not required. Local prediction, training and software tests make no API requests.
-
-## Architecture
+## 2. How it works
 
 ```mermaid
 flowchart LR
-    D[Current and past observations] --> C[Causal multimodal features]
-    C --> E[Eight supervised experts]
-    E --> G[Evidence eligibility and learned error routing]
-    G --> U[Equipment-group calibrated interval]
-    U --> R[Canonical prediction and factual summary]
-    C --> S[Supervisor Agent]
+    D[Current and past observations] --> F[Numerical / curve / text features]
+    D --> M[Maintenance event memory]
+    F --> E[Eight prediction experts]
+    M --> E
+    E --> G[Evidence eligibility + expected-error routing]
+    G --> C[Equipment-group interval calibration]
+    C --> O[Prediction / interval / provenance]
+    D --> S[Supervisor Agent]
     S --> A[Selected independent specialists]
-    A --> T[Allowlisted evidence tools]
+    A --> T[Evidence tools]
     T --> E
-    T --> U
-    A --> P[Semantically unverified prose and trace]
+    T --> C
+    A --> R[Evidence report and audit trace]
 ```
 
-A pre-maintenance image can describe a state that repair changed. MERA-PHM removes it from event-aware memory rather than treating it as current post-maintenance evidence. The gate first restricts experts by available evidence, then chooses the candidate with the lowest learned expected error. Missing text triggers numerical/image fallbacks. Model experts are evaluated independently of which language specialists are delegated.
+**Maintenance-aware memory.** Repair timing determines whether the most recent image predates maintenance. Invalid historical images are removed from post-maintenance memory. Image age and text-change age inform the gate about freshness.
 
-Agent responsibilities: supervisor, quality, numerical, visual, text, maintenance, retrieval, uncertainty, and audit. The supervisor checks quality, delegates at least two predictive specialists, calls fusion, and then audits provenance. The single-Agent control retrieves equivalent evidence in one context. Retrieval uses training equipment archives and excludes the current equipment. No arbitrary file, shell, credential, future-query-label, or physical-device tools are exposed.
+**Evidence-constrained expert selection.** Eight experts cover numerical, text, image, numerical/text, numerical/image, static fusion, ordinary history and event-aware history. A gate learns candidate experts' expected errors on separate devices, then selects an eligible expert. Missing modalities have explicit fallbacks.
 
-## Research results
+**Intervals and tool-grounded Agents.** Split-conformal intervals use maximum residuals per calibration equipment trajectory. Agents retrieve model predictions, quality information and completed training-archive examples through restricted tools, then perform fusion and provenance auditing. The numerical tool supplies the structured prediction.
 
-The release evaluation uses **50 equipment trajectories and 7,626 observations**, with each equipment tested exactly once across five folds. Each fold contains **25 expert-training / 5 routing / 10 calibration / 10 test devices**. Vocabulary is fitted on the 25 training devices. Thirty-device static baselines control for the router's additional five-device label budget. Units are `adu` for degradation and `atu` for time; the target is not RUL or current fault classification.
+**Two training backends.** `trees` uses ExtraTrees; `neural` uses feature MLPs. Both share features, equipment partitions, routing and calibration. Neural experts support CPU/CUDA/MPS training and inference; preprocessing, error routing and calibration use CPU.
 
-| Method | OOF MAE ↓ | Device macro MAE ↓ | RMSE ↓ |
-|---|---:|---:|---:|
-| Numeric expert | 6.4884 | 6.4900 | 9.0375 |
-| Static fusion (25 devices) | 2.9759 | 2.9758 | 4.9346 |
-| Ordinary history fusion | 2.7834 | 2.7860 | 4.6642 |
-| Random forest fusion (30 devices) | 3.3124 | 3.3116 | 5.3514 |
-| Static ExtraTrees (30 devices) | 2.7590 | 2.7584 | 4.6994 |
-| Router without freshness | 2.7406 | 2.7427 | 4.8286 |
-| Router without maintenance reset | 2.7384 | 2.7410 | 4.7030 |
-| MERA constrained router | 2.6919 | 2.6958 | 4.7726 |
+## 3. Environment
 
+| Platform | Tree backend | Neural backend |
+|---|---|---|
+| macOS, Apple Silicon | CPU | CPU / MPS |
+| macOS, Intel | CPU | Subject to available PyTorch builds |
+| Windows | CPU | CPU / NVIDIA CUDA |
+| Linux | CPU | CPU / NVIDIA CUDA |
 
-The constrained router improves OOF MAE by about **9.5%** over 25-device static fusion, but only about **2.4%** over the 30-device ExtraTrees control. The descriptive paired-device interval for improvement over that stronger control includes zero. Removing freshness or maintenance reset changes MAE modestly; the reset-effect interval also includes zero. These results support investigation, not a claim that every component is independently established.
+Use **Python 3.12+, preferably 3.13**. The base installation runs the local workflow. API mode requires a Chat Completions provider with tool calling. LLMs run through the provider API; prediction models train locally.
 
-![Equipment-grouped validation and modality stress tests](docs/assets/validation.png)
+CUDA requires an NVIDIA GPU, driver and matching PyTorch build. Choose the installation command with the [official PyTorch selector](https://pytorch.org/get-started/locally/). Apple Silicon uses [MPS](https://docs.pytorch.org/docs/stable/notes/mps.html).
 
-Under complete image outage, static fusion MAE is **17.155**, versus **3.998** for constrained routing; under combined image/text outage, the corresponding values are **22.795** and **6.488**. Random additional image masking and contiguous outages rebuild memory from surviving past observations, so a dropped current image cannot remain hidden in history. Curve-feature perturbation is a descriptor-level stress test, not raw sensor corruption. Complete conditions and stronger-baseline results are published, including cases where the router does not win.
-
-A negative result matters: under additional random image masking, the router MAE is **6.257**, compared with **3.998** for the numerical/text expert. Under descriptor perturbation, the 30-device static control also slightly outperforms the router. Eligibility and historical memory do not make the system robust to every missingness pattern.
-
-The router's mean interval width is **64.15 adu**, with observed whole-equipment coverage of **94%**. Intervals are conservative and depend on exchangeable equipment groups. High coverage with wide intervals is not evidence of precise maintenance decisions; distribution-shift tests do not inherit nominal coverage guarantees.
-
-**Evidence status:** the same synthetic dataset had already been explored, and eligibility rules were improved after early stress testing. The five-fold evaluation remains exploratory internal validation. It is not external industrial confirmation, a world-first claim, or a direct comparison with the original paper's differently evaluated CNN. Historical pilot results are kept separately and not pooled with this benchmark.
-
-## Agent validation and cost
-
-The expanded opt-in study uses **24 paired cases in six causal quality strata**, four distinct held-out equipment per stratum. It measured **822,665 tokens over 658 requests**, including independent language screening, separate rescue runs and eight specialist smoke tests. No runs were truncated by the shared experiment allocation; individual session and tool-loop limits still apply.
-
-| Mode | Completed / attempted | Requests | Measured tokens |
-|---|---:|---:|---:|
-| Deterministic local control | 24 / 24 | 0 | 0 |
-| Single Agent, default budget | 22 / 24 | 117 | 208,038 |
-| Multi-Agent, default budget | 11 / 24 | 272 | 307,492 |
-| Multi-Agent rescue on failed cases | 9 / 13 | 191 | 221,522 |
-
-The rescue column is a **fresh, separate run with up to 20 requests**, not a replacement for the default-budget failure. Default sessions permit 12 requests; both settings retain the same 24,000 completion-token ceiling and bounded tool loops. All eight specialist roles completed independent evidence-tool smoke tests. All 85 structured case outputs, including failed sessions and rescues, preserved the fixed model's point and interval outputs.
-
-Multi-Agent orchestration completed less reliably and consumed more tokens than the single-Agent control in this sample. Independent model-assisted screening flagged possible evidence contradictions in 14/22 screened single-Agent runs and 20/24 screened default multi-Agent runs. **These are screening flags, not adjudicated error rates or measured semantic accuracy.** Digit rejection prevents invented numeric prose but does not prove qualitative factual correctness. This release is a research prototype; reliable industrial Agent interpretation is not established.
-
-![Real API completion and cost](docs/assets/agent-validation.png)
-
-See the [expanded protocol and complete ledger](results/agent-validation-full/README.md). The earlier [48,170-token budget-censored pilot](results/agent-validation/README.md) remains separate and is not pooled with this study.
+## 4. Install and launch
 
 ```bash
+git clone https://github.com/13536309143/mera-phm.git
+cd mera-phm
+```
+
+### macOS / Linux
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install -e .
+python main.py doctor
+python main.py demo
+python main.py serve --data data/demo --model artifacts/demo-model/model-bank.joblib --open
+```
+
+### Windows Command Prompt / CMD
+
+```bat
+py -3 -m venv .venv
+.venv\Scripts\activate.bat
+python -m pip install -e .
+python main.py doctor
+python main.py demo
+python main.py serve --data data/demo --model artifacts/demo-model/model-bank.joblib --open
+```
+
+In PowerShell, the environment's interpreter can be used directly: `& .\.venv\Scripts\python.exe main.py doctor`.
+
+Open **http://127.0.0.1:8765** and select equipment, observation, prediction policy and Agent mode. `demo` creates sample data and trains a model for a quick end-to-end experience.
+
+Alternatively, double-click `start-lab.command` on macOS or `start-lab.cmd` on Windows. The shared launcher prepares the environment and demo model. `start-demo` runs a local prediction; `start-api` runs a multi-Agent API prediction. `mera-phm` can replace `python main.py` in all CLI examples.
+
+## 5. Configure the API
+
+Copy the configuration template:
+
+```bash
+# macOS / Linux
 cp .env.example .env
-# Fill MODEL_API_KEY, MODEL_NAME and MODEL_BASE_URL with your own compatible provider.
-mera-phm predict --data data/demo --model artifacts/demo-model/model-bank.joblib --equipment 2 --row 8 --mode api
 ```
 
-Real keys belong only in ignored local configuration or environment variables. Chat Completions tool support is required; the real integration study used MiniMax, whose model is recorded in the protocol. Optional reasoning settings can be omitted for other compatible providers.
+```bat
+rem Windows CMD
+copy .env.example .env
+```
 
-Each prediction permits at most 12 requests, 4,096 completion tokens/request and 24,000 total completion tokens. Prompt tokens are additional; these limits are not monetary caps. Successful multi-Agent outputs are cached by observation, model, policy, protocol and provider identity. Cache replay makes no new request and retains the original usage record. Original LLM prose is marked as semantically unverified; canonical values and a code-generated factual summary take precedence.
+Fill `.env` with your provider settings:
 
-## Reproduce the paper-dataset experiments
+```dotenv
+MODEL_API_KEY=your-api-key
+MODEL_NAME=your-tool-calling-model
+MODEL_BASE_URL=https://api.minimax.cn/v1
+API_STYLE=chat
+# Optional; remove if unsupported by your provider
+MODEL_REASONING_EFFORT=low
+```
 
-Obtain the original dataset separately; see [data attribution and layout](docs/dataset.md). Raw data, original record text, per-row labels/predictions and model binaries are not redistributed.
+For MiniMax, use your subscription key, model and compatible endpoint. The measured provider model is recorded in the Agent protocol. Other compatible providers use the same fields. `doctor` checks configuration without revealing keys or making API requests.
 
 ```bash
-mera-phm audit --data "data/raw/Multimodal data for prognostics"
-mera-phm train --data "data/raw/Multimodal data for prognostics" --output artifacts/my-model
-mera-phm benchmark --data "data/raw/Multimodal data for prognostics" --output results/my-validation
-python scripts/render_research_figures.py
-
-# Opt-in: this command makes real API requests and logs measured usage.
-python -m prognostics.full_agent_benchmark --data "data/raw/Multimodal data for prognostics" --model artifacts/my-model/model-bank.joblib --output results/my-agent-validation --workers 3
+python main.py doctor
+python main.py predict --data data/demo --model artifacts/demo-model/model-bank.joblib --equipment 2 --row 8 --mode api
 ```
 
-Published [protocols and fold assignments](results/validation/protocol.json) include fixed parameters, dataset fingerprint and execution-source hashes. The numerical source snapshot preserves the code used for the reported run before later formatting. All device targets stay in ignored local artifacts. A new run can generate its own source snapshot and results.
+| Mode | Workflow | API requests |
+|---|---|---|
+| `local` | Local predictor and deterministic evidence flow | None |
+| `single` | One Agent context for evidence and auditing | Yes |
+| `api` | Supervisor delegates independent specialists | Yes |
 
-## Repository map
+The supervisor can select quality, numerical, visual, text, maintenance, retrieval, uncertainty and audit specialists. A prediction permits 12 requests, at most 4,096 completion tokens/request and 24,000 completion tokens/session. Prompt tokens are additional. Successful multi-Agent results can be replayed from local cache.
+
+## 6. Data and training
+
+Place the dataset in `data/raw/Multimodal data for prognostics/`, containing equipment directories `1`–`50`. Existing data can be supplied with `--data` or `DATASET_PATH` in `.env`. Prefer forward slashes in Windows paths, for example `D:/datasets/Multimodal data for prognostics`.
+
+See [dataset layout, fields and attribution](docs/dataset.md).
+
+### Default CPU tree models
+
+```bash
+python main.py audit --data "data/raw/Multimodal data for prognostics"
+python main.py train --data "data/raw/Multimodal data for prognostics" --backend trees --output artifacts/my-model
+python main.py predict --data "data/raw/Multimodal data for prognostics" --model artifacts/my-model/model-bank.joblib --equipment 2 --row 100 --mode local
+python main.py serve --data "data/raw/Multimodal data for prognostics" --model artifacts/my-model/model-bank.joblib --open
+```
+
+Training saves the model, test metrics, calibration information and report. Omitting `--output` creates a timestamped model directory.
+
+### Neural models and GPUs
+
+Install the optional dependency on Apple Silicon macOS, or Windows/Linux CPU:
+
+```bash
+python -m pip install -e ".[neural]"
+python main.py doctor
+```
+
+On Windows/Linux with CUDA, install the matching CUDA build through the [PyTorch selector](https://pytorch.org/get-started/locally/), then install `.[neural]`.
+
+```bash
+python main.py doctor --device cuda
+python main.py train --data "data/raw/Multimodal data for prognostics" --backend neural --device cuda --epochs 80 --output artifacts/neural-model
+```
+
+Use `--device mps` on Apple Silicon, `--device cpu` for CPU, or `--device auto` for automatic selection. Portable saved weights can be loaded across those environments. Training reports record the actual training device.
+
+## 7. Experimental results
+
+### Prediction quality
+
+The dataset contains **50 equipment trajectories and 7,626 observations**. Five equipment folds test each device once. Each fold uses **25 expert-training / 5 routing / 10 calibration / 10 test devices**. Both backends use identical partitions.
+
+| Method | OOF MAE ↓ | RMSE ↓ |
+|---|---:|---:|
+| Numerical tree expert | 6.488 | 9.038 |
+| Static tree fusion, 25 training devices | 2.976 | 4.935 |
+| Strong static tree control, 30 devices | 2.759 | 4.699 |
+| **MERA tree routing** | **2.692** | **4.773** |
+| Static feature MLP | 7.145 | 11.934 |
+| MERA MLP routing | 6.630 | 11.301 |
+
+Tree routing reduces MAE by about **9.5%** relative to the 25-device static fusion baseline and **2.4%** relative to the matched-label strong control. Trees outperform the tested feature MLP on this dataset and remain the default.
+
+With complete image outage, static fusion MAE is **17.155** versus routed **3.998**. Under additional random image masking, routing gives **6.257**, while numerical/text gives **3.998**. Mean interval width is **64.15 adu**, with **94%** observed whole-equipment coverage. All ablations, seven stress conditions and fold results are organized in the [experiment index](experiments/README.md).
+
+![Two backends under the same grouped protocol](docs/assets/backends.png)
+
+![Grouped prediction validation and modality stress tests](docs/assets/validation.png)
+
+### Agent completion and cost
+
+The six-stratum, 24-case paired API study measured **822,665 tokens over 658 requests**, including independent language screening and eight specialist smoke tests.
+
+| Mode | Completed / attempted | Measured tokens |
+|---|---:|---:|
+| Local control | 24 / 24 | 0 |
+| Single Agent | 22 / 24 | 208,038 |
+| Default-budget multi-Agent | 11 / 24 | 307,492 |
+| Separate higher-budget rescue on failures | 9 / 13 | 221,522 |
+
+All eight specialist smoke tests completed. Single Agent used fewer tokens and completed more often in this sample. Evidence specialization, traceability and orchestration reliability are the focus of the multi-Agent layer. See the [complete Agent study](experiments/agents/paired-api/README.md).
+
+### Run your own experiments
+
+```bash
+python main.py experiments
+python main.py benchmark --data "data/raw/Multimodal data for prognostics" --backend trees --output artifacts/experiments/tree-run
+python main.py benchmark --data "data/raw/Multimodal data for prognostics" --backend neural --device cuda --epochs 80 --output artifacts/experiments/neural-run
+python main.py agent-benchmark --data "data/raw/Multimodal data for prognostics" --model artifacts/my-model/model-bank.joblib --output artifacts/experiments/api-run
+```
+
+Numerical experiments use no API. `agent-benchmark` uses `.env`. Each study saves its protocol, assignments, aggregates and execution-source snapshot. Published studies live under `experiments/`; local reproductions use `artifacts/`.
+
+## 8. Repository layout
 
 ```text
-prognostics/       Causal loader, experts, routing, agents, benchmarks and packaged dashboard
-scripts/           Figures and public-release checks
-tests/             Temporary-data invariants and scripted-provider fault tests
-results/           Aggregate metrics, fold protocols and bounded API ledger
-docs/              Research design, dataset notes and figures
-.github/workflows/ Offline test and clean-demo CI
-.env.example       Credential placeholders
+prognostics/
+  data.py            Causal loader and modality features
+  models.py          Experts, routing, calibration and persistence
+  neural.py          CPU / CUDA / MPS neural backend
+  agents.py          Single- and multi-Agent tool workflows
+  benchmark.py       Grouped prediction and stress experiments
+  full_agent_benchmark.py  Paired real API evaluation
+  cli.py / runtime.py     Commands and environment checks
+  server.py / web/         Local dashboard
+experiments/
+  numerical/         Tree and neural prediction studies
+  agents/            Full Agent comparison
+  archive/           Earlier pilot studies
+scripts/             Portable launcher, plots and release checks
+tests/               Data, model, Agent and portability checks
+docs/                Methods and dataset documentation
+data/                Local original data and generated sample data
+artifacts/           Local models and experiment runs
+runs/                Prediction reports and cache
 ```
 
-## Verification and contributing
+## 9. Development and citation
 
 ```bash
 python -m pip install -r requirements-dev.txt
 python -m unittest discover -s tests -v
 ruff check prognostics tests scripts main.py
-ruff format --check prognostics tests scripts main.py
 python scripts/check_release.py
 ```
 
-Tests need neither the original dataset nor API keys. They cover causal prefixes, target isolation, equipment grouping, calibration ranks, fallback behavior, independent Agent contexts, invalid tools, early fusion, invented numerical prose, provider failures, unknown usage, budgets, persistence and cache replay. Scripted-provider fault tests are software checks, not real LLM robustness estimates. CI is configured for Python 3.12–3.14; only report remote CI success after GitHub actually runs it.
+CI covers macOS, Windows and Linux, with separate base and optional neural workflows. Accelerator execution depends on the hardware available to a runner.
 
-See [contributing](CONTRIBUTING.md) and [credential handling](SECURITY.md). Please report negative outcomes and preserve the distinction between numerical accuracy and orchestration quality.
+The research focus is maintenance-dependent evidence validity and auditable routing. Current results use the paper's simulated equipment data. Numerical improvement and Agent behavior are evaluated separately; hypotheses, controls, negative results and assumptions are documented in [research design](docs/research-design.md).
 
-## Attribution and license
-
-The source and original toy generator are MIT-licensed; this does not license the original dataset or external models. Cite the software using [CITATION.cff](CITATION.cff), and cite Yang, Baraldi and Zio's [original dataset paper](https://doi.org/10.1016/j.jmsy.2021.01.007) when using their data. Related-work distinctions and calibration assumptions are documented in [research design](docs/research-design.md).
+Code and the sample generator are MIT-licensed; original data is obtained separately. Cite [Yang, Baraldi and Zio](https://doi.org/10.1016/j.jmsy.2021.01.007) for the data and [CITATION.cff](CITATION.cff) for the software. See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).

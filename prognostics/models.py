@@ -90,8 +90,13 @@ def group_radius(y, p, groups, coverage=0.9):
 
 
 class ModelBank:
-    def __init__(self, seed=20261012, trees=100):
+    def __init__(self, seed=20261012, trees=100, backend="trees", device="cpu", epochs=80):
+        if backend not in {"trees", "neural"}:
+            raise ValueError("backend 需为 trees 或 neural。")
+        if backend == "trees" and device not in {"cpu", "auto"}:
+            raise ValueError("树模型使用 CPU；GPU 训练请添加 --backend neural。")
         self.seed, self.trees = seed, trees
+        self.backend, self.device, self.epochs = backend, device, epochs
         self.models = {}
         self.routers = {}
         self.radii = {}
@@ -108,9 +113,14 @@ class ModelBank:
         self.training_seconds = {}
         for name in EXPERTS:
             start = time.perf_counter()
-            model = ExtraTreesRegressor(
-                n_estimators=self.trees, min_samples_leaf=3, random_state=self.seed, n_jobs=2
-            )
+            if self.backend == "neural":
+                from .neural import NeuralRegressor
+
+                model = NeuralRegressor(seed=self.seed, epochs=self.epochs, device=self.device)
+            else:
+                model = ExtraTreesRegressor(
+                    n_estimators=self.trees, min_samples_leaf=3, random_state=self.seed, n_jobs=2
+                )
             model.fit(features(train, self.vectorizer, name), y[train_idx])
             self.models[name] = model
             self.training_seconds[name] = time.perf_counter() - start

@@ -11,9 +11,14 @@ ROOT = Path(__file__).resolve().parent.parent
 
 
 def main():
-    result = json.loads((ROOT / "results/validation/summary.json").read_text())
+    result = json.loads(
+        (ROOT / "experiments/numerical/tree-groupcv/summary.json").read_text(encoding="utf-8")
+    )
     folds = [
-        json.loads((ROOT / f"results/validation/fold-{i}.json").read_text()) for i in range(1, 6)
+        json.loads(
+            (ROOT / f"experiments/numerical/tree-groupcv/fold-{i}.json").read_text(encoding="utf-8")
+        )
+        for i in range(1, 6)
     ]
     fig = Figure(figsize=(13, 5.3), dpi=160)
     FigureCanvasAgg(fig)

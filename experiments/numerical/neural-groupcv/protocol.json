@@ -1,0 +1,68 @@
+{
+  "name": "MERA-PHM five-fold equipment validation",
+  "created_utc": "2026-10-12T14:42:39.255960+00:00",
+  "seed": 20261012,
+  "folds": 5,
+  "devices": 50,
+  "samples": 7626,
+  "expert_trees": 100,
+  "backend": "neural",
+  "requested_device": "cpu",
+  "neural_epochs": 80,
+  "neural_architecture": "standardized feature MLP 64/32/GELU, AdamW lr=0.001, batch=512; CPU error router",
+  "per_fold_devices": {
+    "training": 25,
+    "routing": 5,
+    "calibration": 10,
+    "test": 10
+  },
+  "baseline_label_budget": "25-device and 30-device controls; all share vocabulary fitted on 25 training devices.",
+  "baseline_hyperparameters": {
+    "min_leaf": 3,
+    "ridge_alpha": 10.0,
+    "hist_gradient_iterations": 150,
+    "hist_gradient_l2": 1.0
+  },
+  "component_ablations": {
+    "router_without_freshness": "Retrain all experts and gates with image age and text-change age zeroed in both history representations.",
+    "router_without_reset": "Retrain all experts and gates without history invalidation or explicit pre-repair flag; raw numeric repair time remains."
+  },
+  "stress_conditions": [
+    "image_outage",
+    "text_outage",
+    "both_outage",
+    "stale_history",
+    "random_image_missing_50",
+    "block_image_outage",
+    "curve_feature_noise"
+  ],
+  "noise_definition": "Descriptor perturbation = 10% of training-feature standard deviation; not raw sensor/image corruption.",
+  "missingness_definition": "Additional random masking probability 50%; contiguous image masking from 40% to 70% of each trajectory, rebuilding causal memory.",
+  "dataset_fingerprint": {
+    "sha256": "c8ab30cc9a9561e56f01515d66d9d6d9d1c88c2c4cff0c5512d7afbb1e99fd1a",
+    "files": 7976,
+    "scope": "all device .txt and .tiff files, including offline labels"
+  },
+  "python": "3.14.8",
+  "source_sha256": {
+    "full_agent_benchmark.py": "119d496e2602d1c5af8377eabeae9c09c8c23895f05fe4018025a2c151af77d6",
+    "server.py": "59708eb5252c2529cc703c88ee2a8f204aaa72911b275874b22ad56e24900f06",
+    "neural.py": "0c4cc34fafe2d6caa538a6a35ebd4ab124a8f335a85c6f2e45e0865127110ea8",
+    "benchmark.py": "9b2ae682572d75a98e91a2c7cb6c7c103786fa509dceae3d5d6c5415f46ef326",
+    "models.py": "e4b2cbbeb639e0e9bedcbb11e703bed4aaf4257fc1c84deaff531a16eb988feb",
+    "research.py": "6e9c00c4396054e33aa6f2edead0d1320be6eddb091c43732b9cdf76464d622e",
+    "__init__.py": "b29937f058eabafc346947d349808cddeb93a733ac40be2f213fb0c8ebd1122b",
+    "runtime.py": "500dd55f4afc962bb2b949b99c227a6f62be8fae3feab0e836a39a01608fe562",
+    "agents.py": "95bff8fb49481683982a8706a9f04e30befdc2acc83f39a08b7cd530086be987",
+    "cli.py": "ec43220edff44f0a935a2e7c7f9fd10645d82e71f9d4c008520f5a5ce1de36bb",
+    "agent_benchmark.py": "19c5097729c4aedb0afd2eb156ae8047db3b6ea1d656f7097e8264eb6f1bac26",
+    "demo.py": "9badf52a25f08aee66b278fc26ed1b4f410493cfd90a133b41ea2d8b77c53a8a",
+    "data.py": "4754425f230fb02a18a98142200137a154e9eda544b6162e8afd96901c67d1df"
+  },
+  "limitations": [
+    "Same synthetic dataset previously explored; internal validation, not untouched external confirmation.",
+    "Hyperparameters fixed before this run; no original-paper CNN reproduction.",
+    "Bootstrap over devices is descriptive; models share training data across folds.",
+    "Shifted stress tests do not inherit nominal conformal coverage guarantees."
+  ]
+}

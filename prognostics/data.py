@@ -76,7 +76,7 @@ def observations(root, equipment, upto=None):
     numeric = np.column_stack(
         [np.loadtxt(directory / "Numerical" / f"{name}.txt").reshape(-1) for name in NUMERIC_NAMES]
     )[:count]
-    texts = (directory / "workorder.txt").read_text().splitlines()[:count]
+    texts = (directory / "workorder.txt").read_text(encoding="utf-8").splitlines()[:count]
     times = times[:count]
     if len(numeric) != count or len(texts) != count or not np.all(np.diff(times) > 0):
         raise ValueError("数值、文本与时间未对齐或时间不递增。")

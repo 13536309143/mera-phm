@@ -16,6 +16,7 @@ from .agents import run_prediction
 from .cli import load_bank, save_prediction
 from .data import PROJECT, online_sample, quality
 from .models import POLICIES
+from .runtime import experiment_index
 
 
 def serve(root, model=None, port=8765, open_browser=False):
@@ -61,26 +62,38 @@ def serve(root, model=None, port=8765, open_browser=False):
                         (Path(__file__).parent / "web/index.html").read_bytes(),
                         mime="text/html; charset=utf-8",
                     )
+                if parsed.path in {"/app.js", "/style.css"}:
+                    return self.reply(
+                        (Path(__file__).parent / "web" / parsed.path[1:]).read_bytes(),
+                        mime="text/javascript; charset=utf-8"
+                        if parsed.path == "/app.js"
+                        else "text/css; charset=utf-8",
+                    )
                 if parsed.path == "/api/overview":
                     result = (
                         (Path(model).parent / "results.json")
                         if model
                         else PROJECT / "artifacts/main-model/results.json"
                     )
-                    sweep = PROJECT / "results/pilot/summary.json"
-                    validation = PROJECT / "results/validation/summary.json"
-                    agent_validation = PROJECT / "results/agent-validation-full/summary.json"
+                    sweep = PROJECT / "experiments/archive/numerical-pilot/summary.json"
+                    validation = PROJECT / "experiments/numerical/tree-groupcv/summary.json"
+                    agent_validation = PROJECT / "experiments/agents/paired-api/summary.json"
                     if not agent_validation.exists():
-                        agent_validation = PROJECT / "results/agent-validation/summary.json"
+                        agent_validation = PROJECT / "experiments/archive/agent-pilot/summary.json"
                     return self.reply(
                         {
                             "model_manifest": bank.manifest,
-                            "research": json.loads(result.read_text()),
-                            "sweep": json.loads(sweep.read_text()) if sweep.exists() else None,
-                            "validation": json.loads(validation.read_text())
+                            "experiments": experiment_index(),
+                            "research": json.loads(result.read_text(encoding="utf-8")),
+                            "sweep": json.loads(sweep.read_text(encoding="utf-8"))
+                            if sweep.exists()
+                            else None,
+                            "validation": json.loads(validation.read_text(encoding="utf-8"))
                             if validation.exists()
                             else None,
-                            "agent_validation": json.loads(agent_validation.read_text())
+                            "agent_validation": json.loads(
+                                agent_validation.read_text(encoding="utf-8")
+                            )
                             if agent_validation.exists()
                             else None,
                             "roles": [

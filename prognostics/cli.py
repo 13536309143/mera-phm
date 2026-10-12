@@ -1,9 +1,8 @@
 import argparse
 import hashlib
 import json
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from zoneinfo import ZoneInfo
 
 import numpy as np
 
@@ -14,7 +13,7 @@ from .research import run_sweep, train_research
 
 
 def stamp():
-    return datetime.now(ZoneInfo("Asia/Shanghai")).strftime("%Y%m%d-%H%M%S-%f")
+    return datetime.now(timezone(timedelta(hours=8))).strftime("%Y%m%d-%H%M%S-%f")
 
 
 def save_prediction(result, out=None):
@@ -108,17 +107,34 @@ def main():
         description="MERA-PHM: multimodal degradation prediction and auditable agent tools"
     )
     sub = parser.add_subparsers(dest="command", required=True)
+    doctor = sub.add_parser(
+        "doctor", help="Check Python, API configuration and optional GPU devices."
+    )
+    doctor.add_argument("--device", choices=["auto", "cpu", "cuda", "mps"], default="auto")
+    sub.add_parser("experiments", help="Show the published numerical and Agent experiment index.")
+    agent = sub.add_parser("agent-benchmark", help="Run the stratified, paired real API study.")
+    agent.add_argument("--data")
+    agent.add_argument("--model")
+    agent.add_argument("--output", default="artifacts/experiments/paired-api")
+    agent.add_argument("--workers", type=int, default=3)
+    agent.add_argument("--max-tokens", type=int, default=2000000)
     demo = sub.add_parser("demo", help="Generate original toy data and train a demo model; no API.")
     demo.add_argument("--data", default="data/demo")
     demo.add_argument("--output", default="artifacts/demo-model")
     demo.add_argument("--seed", type=int, default=17)
+    demo.add_argument("--backend", choices=["trees", "neural"], default="trees")
+    demo.add_argument("--device", choices=["auto", "cpu", "cuda", "mps"], default="auto")
+    demo.add_argument("--epochs", type=int, default=80)
     benchmark = sub.add_parser(
         "benchmark",
         help="Run five equipment folds, matched-label baselines and component ablations.",
     )
     benchmark.add_argument("--data")
-    benchmark.add_argument("--output", default="results/validation")
+    benchmark.add_argument("--output", default="artifacts/experiments/tree-groupcv")
     benchmark.add_argument("--seed", type=int, default=20261012)
+    benchmark.add_argument("--backend", choices=["trees", "neural"], default="trees")
+    benchmark.add_argument("--device", choices=["auto", "cpu", "cuda", "mps"], default="auto")
+    benchmark.add_argument("--epochs", type=int, default=80)
     for command in ["audit", "train", "research", "predict", "serve", "agent-control"]:
         part = sub.add_parser(command)
         part.add_argument("--data")
@@ -128,6 +144,9 @@ def main():
             part.add_argument("--output")
         if command == "train":
             part.add_argument("--seed", type=int, default=20261012)
+            part.add_argument("--backend", choices=["trees", "neural"], default="trees")
+            part.add_argument("--device", choices=["auto", "cpu", "cuda", "mps"], default="auto")
+            part.add_argument("--epochs", type=int, default=80)
         if command == "research":
             part.add_argument(
                 "--seeds", type=int, nargs="+", default=[20261012, 20261013, 20261014]
@@ -135,7 +154,7 @@ def main():
         if command == "predict":
             part.add_argument("--equipment", type=int, default=2)
             part.add_argument("--row", type=int, default=100)
-            part.add_argument("--mode", choices=["local", "api"], default="local")
+            part.add_argument("--mode", choices=["local", "single", "api"], default="local")
             part.add_argument("--policy", choices=POLICIES, default="learned_router")
             part.add_argument("--no-cache", action="store_true")
         if command == "serve":
@@ -146,17 +165,55 @@ def main():
             part.add_argument("--cases", type=int, default=1)
     args = parser.parse_args()
     try:
+        if args.command == "doctor":
+            from .runtime import doctor_report
+
+            report = doctor_report(args.device)
+            print(json.dumps(report, ensure_ascii=False, indent=2))
+            return 0 if report["device_check_passed"] else 1
+        if args.command == "experiments":
+            from .runtime import experiment_index
+
+            print(json.dumps(experiment_index(), ensure_ascii=False, indent=2))
+            return 0
+        if args.command == "agent-benchmark":
+            from .full_agent_benchmark import run
+
+            run(
+                discover_data(args.data),
+                args.output,
+                args.model,
+                PROJECT / ".env",
+                args.max_tokens,
+                args.workers,
+            )
+            return 0
         if args.command == "demo":
             from .demo import generate_demo
 
             root = generate_demo(args.data, args.seed)
-            train_research(root, args.output, args.seed, trees=20)
-            print("Demo ready. These toy results are not benchmark evidence.")
+            train_research(
+                root,
+                args.output,
+                args.seed,
+                trees=20,
+                backend=args.backend,
+                device=args.device,
+                epochs=args.epochs,
+            )
+            print("Demo ready. Run predict or serve with the saved model.")
             return 0
         if args.command == "benchmark":
             from .benchmark import run_benchmark
 
-            run_benchmark(discover_data(args.data), args.output, args.seed)
+            run_benchmark(
+                discover_data(args.data),
+                args.output,
+                args.seed,
+                backend=args.backend,
+                device=args.device,
+                epochs=args.epochs,
+            )
             return 0
         root = discover_data(args.data)
         if args.command == "audit":
@@ -176,11 +233,13 @@ def main():
                 else PROJECT / "artifacts" / f"audit-{stamp()}.json"
             )
             out.parent.mkdir(parents=True, exist_ok=True)
-            out.write_text(json.dumps(report, ensure_ascii=False, indent=2))
+            out.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
             print(json.dumps(report, ensure_ascii=False, indent=2))
         elif args.command == "train":
             out = Path(args.output) if args.output else PROJECT / "artifacts" / f"model-{stamp()}"
-            _, result = train_research(root, out, args.seed)
+            _, result = train_research(
+                root, out, args.seed, backend=args.backend, device=args.device, epochs=args.epochs
+            )
             print("模型与结果：", out)
             print("学习路由 MAE：", result["metrics"]["learned_router"]["mae"])
         elif args.command == "research":

@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mera-phm"
-version = "1.0.0"
+version = "1.1.0"
 description = "Maintenance-aware evidence routing and auditable agents for multimodal prognostics"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -18,11 +18,14 @@ dependencies = [
 [project.scripts]
 mera-phm = "prognostics.cli:main"
 
+[project.optional-dependencies]
+neural = ["torch>=2.13,<2.15"]
+
 [tool.setuptools.packages.find]
 include = ["prognostics*"]
 
 [tool.setuptools.package-data]
-prognostics = ["web/*.html"]
+prognostics = ["web/*"]
 
 [tool.ruff]
 line-length = 100

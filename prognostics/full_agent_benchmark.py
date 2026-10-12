@@ -14,8 +14,8 @@ from zipfile import ZipFile
 import numpy as np
 from dotenv import dotenv_values
 
-from .agent_benchmark import ExperimentBudget
 from .agents import ROLES, AgentSession, function
+from .budgets import ExperimentBudget
 from .cli import load_bank
 from .data import PROJECT, discover_data, observations, quality
 
@@ -213,7 +213,7 @@ def run(root, out, model=None, env_file=None, max_tokens=2000000, workers=3):
     ]
     cases = select_cases(rows)
     budget = ConcurrentBudget(max_tokens)
-    sources = ["agents.py", "agent_benchmark.py", "full_agent_benchmark.py"]
+    sources = ["agents.py", "budgets.py", "full_agent_benchmark.py"]
     plan = {
         "cases": [{"stratum": s, "equipment": r["equipment"], "row": r["row"]} for s, r in cases],
         "model_sha256": identity,
@@ -234,7 +234,7 @@ def run(root, out, model=None, env_file=None, max_tokens=2000000, workers=3):
     with ZipFile(out / "source-snapshot.zip", "w") as archive:
         for name in sources:
             archive.write(Path(__file__).parent / name, "prognostics/" + name)
-    (out / "protocol.json").write_text(json.dumps(plan, indent=2) + "\n")
+    (out / "protocol.json").write_text(json.dumps(plan, indent=2) + "\n", encoding="utf-8")
 
     def case_job(index, stratum, row):
         records = []
@@ -263,7 +263,7 @@ def run(root, out, model=None, env_file=None, max_tokens=2000000, workers=3):
                     stratum, row, variant, result, time.perf_counter() - start, reference
                 )
                 (private / f"{index:02d}-{variant}.json").write_text(
-                    json.dumps(result, ensure_ascii=False, indent=2) + "\n"
+                    json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
                 )
                 if variant != "deterministic_control":
                     record["language_screen"], record["screen_usage"] = screen_language(
@@ -295,7 +295,7 @@ def run(root, out, model=None, env_file=None, max_tokens=2000000, workers=3):
         for future in as_completed(futures):
             records.extend(future.result())
             (out / "records.json").write_text(
-                json.dumps(records, ensure_ascii=False, indent=2) + "\n"
+                json.dumps(records, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
             )
     role_records = []
     sample = next(r for s, r in cases if s == "visible_short_horizon")
@@ -315,7 +315,7 @@ def run(root, out, model=None, env_file=None, max_tokens=2000000, workers=3):
                 session.client.close()
         result = session.result("role_smoke", None, error)
         (private / f"role-{role}.json").write_text(
-            json.dumps(result, ensure_ascii=False, indent=2) + "\n"
+            json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
         )
         role_records.append(
             {
@@ -359,7 +359,9 @@ def run(root, out, model=None, env_file=None, max_tokens=2000000, workers=3):
         "usage_unknown": budget.unknown_usage,
         "language_semantic_accuracy": "not established; screening findings are model-assisted flags, not adjudicated truth",
     }
-    (out / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n")
+    (out / "summary.json").write_text(
+        json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+    )
     return summary
 
 
@@ -368,7 +370,7 @@ def main():
     parser.add_argument("--data")
     parser.add_argument("--model")
     parser.add_argument("--env-file")
-    parser.add_argument("--output", default="results/agent-validation-full")
+    parser.add_argument("--output", default="artifacts/experiments/paired-api")
     parser.add_argument("--max-tokens", type=int, default=2000000)
     parser.add_argument("--workers", type=int, default=3)
     args = parser.parse_args()

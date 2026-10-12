@@ -104,24 +104,32 @@ def stress_rows(rows, kind):
     return out
 
 
-def train_research(root, out, seed=20261012, trees=100, rows_and_y=None):
+def train_research(
+    root, out, seed=20261012, trees=100, rows_and_y=None, backend="trees", device="cpu", epochs=80
+):
     out = Path(out)
     out.mkdir(parents=True, exist_ok=False)
     rows, y = load_dataset(root) if rows_and_y is None else rows_and_y
     split, devices = make_split(rows, seed)
     print("Equipment splits:", devices, flush=True)
-    bank = ModelBank(seed, trees).fit(rows, y, split)
+    bank = ModelBank(seed, trees, backend, device, epochs).fit(rows, y, split)
     bank.manifest = {
         "devices": devices,
         "seed": seed,
         "target": "next scheduled inspection degradation level",
-        "pipeline_version": "1.0.0",
+        "pipeline_version": "1.1.0",
         "dataset_fingerprint": dataset_fingerprint(root),
         "data_history": "same dataset previously explored; holdout is an internal research split, not untouched external confirmation",
         "train_equipment_count": 25,
         "routing_equipment_count": 5,
         "calibration_equipment_count": 10,
         "test_equipment_count": 10,
+        "backend": backend,
+        "requested_device": device,
+        "training_device": next(iter(bank.models.values())).training_device
+        if backend == "neural"
+        else "cpu",
+        "epochs": epochs if backend == "neural" else None,
     }
     test = [rows[i] for i in split["test"]]
     ty = y[split["test"]]

@@ -637,8 +637,16 @@ def run_prediction(
             "agent_protocol": "v3",
         }
         return result
+    if mode == "single":
+        result = session.single_agent()
+        result["provenance"] = {
+            "model_sha256": model_identity,
+            "observation_sha256": sample_hash(sample),
+            "agent_protocol": "v3",
+        }
+        return result
     if mode != "api":
-        raise ValueError("运行模式应为 local 或 api。")
+        raise ValueError("运行模式应为 local、single 或 api。")
     load_dotenv(PROJECT / ".env", override=False)
     identity = hashlib.sha256(
         (
@@ -653,7 +661,7 @@ def run_prediction(
     directory = PROJECT / "runs/agent-cache"
     path = directory / f"{identity}.json"
     if cache and path.exists():
-        result = json.loads(path.read_text())
+        result = json.loads(path.read_text(encoding="utf-8"))
         result["cached"] = True
         result["new_api_requests"] = 0
         result["verified_summary"] = verified_summary(sample, result["forecast"])

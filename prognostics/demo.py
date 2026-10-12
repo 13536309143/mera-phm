@@ -58,6 +58,7 @@ def generate_demo(root, seed=17, devices=50, rows=24):
             np.savetxt(directory / "Numerical" / f"{name}.txt", np.array(numeric)[:, i])
         (directory / "workorder.txt").write_text("\n".join(texts) + "\n", encoding="utf-8")
     (root / "README.txt").write_text(
-        "Original MERA-PHM software-test fixture. This is not the paper dataset or its simulator. Do not use toy results as evidence of industrial predictive accuracy.\n"
+        "Original MERA-PHM software-test fixture. This is not the paper dataset or its simulator. Do not use toy results as evidence of industrial predictive accuracy.\n",
+        encoding="utf-8",
     )
     return root

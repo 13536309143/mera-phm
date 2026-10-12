@@ -27,7 +27,9 @@ class CausalTests(unittest.TestCase):
         np.savetxt(d / "time.txt", [10, 20, 30, 40])
         for name, values in zip(NUMERIC_NAMES, [[5] * 4, [10, 20, 5, 15], [0, 0, 1, 1], [0] * 4]):
             np.savetxt(d / "Numerical" / f"{name}.txt", values)
-        (d / "workorder.txt").write_text("stable\nstable\nrepaired\nfuture statement\n")
+        (d / "workorder.txt").write_text(
+            "stable\nstable\nrepaired\nfuture statement\n", encoding="utf-8"
+        )
         for i in range(1, 5):
             im = np.full((20, 20), 255, dtype=np.uint8)
             if i == 2:
@@ -51,7 +53,9 @@ class CausalTests(unittest.TestCase):
     def test_future_rows_do_not_change_current_features(self):
         before = online_sample(self.root, 1, 2)
         d = self.root / "1"
-        (d / "workorder.txt").write_text("stable\nstable\nmalicious future\nchanged future\n")
+        (d / "workorder.txt").write_text(
+            "stable\nstable\nmalicious future\nchanged future\n", encoding="utf-8"
+        )
         np.savetxt(d / "Numerical/nextinstime.txt", [5, 5, 900, 999])
         # Removing unseen images proves that prefix inference does not open them.
         (d / "Image/3.tiff").unlink()
@@ -209,6 +213,18 @@ class AgentBoundaryTests(unittest.TestCase):
         self.assertEqual(result["new_api_requests"], 0)
         self.assertEqual(result["mode"], "deterministic_control")
         self.assertEqual(result["forecast"], self.session.forecast)
+
+    def test_single_mode_routes_to_single_context_without_multi_cache(self):
+        with patch.object(
+            AgentSession,
+            "single_agent",
+            return_value=self.session.result("single_agent", "mock", None),
+        ) as single:
+            result = run_prediction(self.bank, self.sample, "single", model_identity="test")
+        self.assertEqual(single.call_count, 1)
+        self.assertEqual(result["mode"], "single_agent")
+        self.assertEqual(result["forecast"], self.session.forecast)
+        self.assertEqual(result["provenance"]["model_sha256"], "test")
 
     def test_retrieval_is_training_only_and_excludes_current_device(self):
         sample = online_sample(self.root, self.bank.manifest["devices"]["train"][0], 20)
