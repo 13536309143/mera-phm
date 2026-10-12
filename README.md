@@ -2,7 +2,7 @@
 
 ### Maintenance-aware multimodal prognostics and auditable Agent collaboration
 
-[English](README.md) · [简体中文](README.zh-CN.md) · [Experiment index](experiments/README.md) · [Research design](docs/research-design.md)
+[English](README.md) · [简体中文](README.zh-CN.md) · [Technical manual](docs/technical-manual.md) · [中文技术手册](docs/technical-manual.zh-CN.md) · [Experiment index](experiments/README.md) · [Research design](docs/research-design.md)
 
 [![CI](https://github.com/13536309143/mera-phm/actions/workflows/ci.yml/badge.svg)](https://github.com/13536309143/mera-phm/actions/workflows/ci.yml) · MIT · Python 3.12+
 

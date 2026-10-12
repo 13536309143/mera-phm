@@ -158,7 +158,7 @@ def serve(root, model=None, port=8765, open_browser=False):
                 row = int(body.get("row", 100))
                 mode = body.get("mode", "local")
                 policy = body.get("policy", "learned_router")
-                if mode not in ["local", "api"] or policy not in POLICIES:
+                if mode not in ["local", "single", "api"] or policy not in POLICIES:
                     raise ValueError("模式或策略无效。")
                 sample = online_sample(root, e, row)
                 job = uuid.uuid4().hex

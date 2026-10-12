@@ -2,7 +2,7 @@
 
 ### 维护感知的多模态退化预测与多 Agent 证据协作
 
-[English](README.md) · [简体中文](README.zh-CN.md) · [实验总览](experiments/README.md) · [研究原理](docs/research-design.md)
+[English](README.md) · [简体中文](README.zh-CN.md) · [中文技术手册](docs/technical-manual.zh-CN.md) · [Technical manual](docs/technical-manual.md) · [实验总览](experiments/README.md) · [研究原理](docs/research-design.md)
 
 [![CI](https://github.com/13536309143/mera-phm/actions/workflows/ci.yml/badge.svg)](https://github.com/13536309143/mera-phm/actions/workflows/ci.yml) · MIT · Python 3.12+
 
