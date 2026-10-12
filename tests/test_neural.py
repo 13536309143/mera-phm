@@ -62,6 +62,10 @@ class NeuralTests(unittest.TestCase):
                                 "weight difference",
                                 float((cpu_layer.weight - restored_layer.weight.cpu()).abs().max()),
                             )
+                            print(
+                                "bias difference",
+                                float((cpu_layer.bias - restored_layer.bias.cpu()).abs().max()),
+                            )
             np.testing.assert_allclose(original, replay, atol=1e-4)
 
     def test_unavailable_gpu_rejected_and_auto_falls_back(self):

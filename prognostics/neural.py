@@ -38,14 +38,21 @@ class NeuralRegressor:
         self.device = device
         self._network = None
 
-    def network(self):
+    def network(self, device=None):
         torch = torch_runtime()
+
+        class PortableLinear(torch.nn.Linear):
+            def forward(self, value):
+                # Separate matmul and bias addition avoids the fused MPS linear path.
+                return value.matmul(self.weight.t()) + self.bias
+
+        linear = PortableLinear if device == "mps" else torch.nn.Linear
         return torch.nn.Sequential(
-            torch.nn.Linear(self.input_size, 64),
+            linear(self.input_size, 64),
             torch.nn.GELU(),
-            torch.nn.Linear(64, 32),
+            linear(64, 32),
             torch.nn.GELU(),
-            torch.nn.Linear(32, 1),
+            linear(32, 1),
         )
 
     def fit(self, x, y):
@@ -62,7 +69,7 @@ class NeuralRegressor:
         self.y_mean, self.y_scale = float(y.mean()), max(float(y.std()), 1e-6)
         tx = torch.as_tensor((x - self.x_mean) / self.x_scale, device=self.training_device)
         ty = torch.as_tensor((y - self.y_mean) / self.y_scale, device=self.training_device)
-        model = self.network().to(self.training_device)
+        model = self.network(self.training_device).to(self.training_device)
         optimizer = torch.optim.AdamW(model.parameters(), lr=0.001, weight_decay=0.001)
         rng = np.random.default_rng(self.seed)
         self.loss_curve = []
@@ -93,7 +100,7 @@ class NeuralRegressor:
         if self._network is None:
             # Checkpoints carry CPU NumPy arrays and can move between CUDA, MPS and CPU hosts.
             self.inference_device = resolve_device("auto")
-            self._network = self.network()
+            self._network = self.network(self.inference_device)
             self._network.load_state_dict(
                 {n: torch.from_numpy(w.copy()) for n, w in self.weights.items()}
             )
