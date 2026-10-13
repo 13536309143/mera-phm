@@ -93,7 +93,7 @@ flowchart TD
 
 ### 4.1 数据目录
 
-将论文数据放在 `data/raw/Multimodal data for prognostics/`，或通过 `--data` 指定其他位置。传入的根目录应直接包含 `1` 到 `50` 的设备目录：
+源代码仓库已附带完整论文数据：[数据压缩包](../data/raw/Multimodal%20data%20for%20prognostics.zip)。首次使用默认数据目录时会自动解压到 `data/raw/Multimodal data for prognostics/`，也可以运行 `python scripts/prepare_data.py --verify` 主动解压并逐文件验证。压缩包保留作者原始说明，数据指纹与已发布实验一致。其他位置的数据可通过 `--data` 指定。根目录直接包含 `1` 到 `50` 的设备目录：
 
 ```text
 Multimodal data for prognostics/
@@ -726,7 +726,7 @@ with urllib.request.urlopen(f"http://127.0.0.1:8765/api/jobs/{job}") as response
 
 模型和配置应与实验协议一起管理。变更特征、提示、设备划分或参数后创建新的实验目录，保留模型 manifest、指纹、源码快照与环境信息。
 
-`joblib` 模型属于可执行反序列化格式，只加载可信来源的模型文件。工作区 `.env`、原始数据、训练模型与本地运行记录属于本地资料，默认不进入 Git。
+`joblib` 模型属于可执行反序列化格式，只加载可信来源的模型文件。工作区 `.env`、解压后的数据、训练模型与本地运行记录默认不进入 Git；仓库仅跟踪完整原始数据压缩包和归属、校验信息。
 
 ```bash
 python -m unittest discover -s tests -v
@@ -735,7 +735,7 @@ python scripts/check_release.py
 
 测试覆盖因果加载、标签隔离、候选约束、区间、Agent 协议、预算、神经模型保存与重载、跨平台启动和编码等。可选设备测试在设备不可用时跳过；跳过不能解释为硬件通过。当前发布版的 Windows/Linux/Mac CI 已验证，后续改动仍需查看对应运行结果。
 
-公开实验目录保存聚合结果和协议；原始曲线、文本、标签、模型档案和逐样本记录需按数据授权单独管理。代码许可证为 MIT，数据权利遵循数据来源。
+公开实验目录保存聚合结果和协议。完整原始曲线、文本和标签随数据包提供；训练模型档案和本地逐样本记录仍需分别管理。代码许可证为 MIT，第三方数据归属见 [数据说明](../data/DATASET-NOTICE.md)。
 
 ## 22. 扩展指南
 

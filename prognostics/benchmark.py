@@ -274,7 +274,14 @@ def run_benchmark(root, out, seed=20261012, trees=100, backend="trees", device="
     # Persist the protocol before evaluating any folds.
     json_write(out / "protocol.json", protocol)
     with ZipFile(out / "numerical-source-snapshot.zip", "w", ZIP_DEFLATED) as snapshot:
-        for name in ["data.py", "models.py", "research.py", "benchmark.py", "neural.py"]:
+        for name in [
+            "data.py",
+            "dataset_bundle.py",
+            "models.py",
+            "research.py",
+            "benchmark.py",
+            "neural.py",
+        ]:
             snapshot.write(source / name, "prognostics/" + name)
     methods = list(dict.fromkeys(EXPERTS + POLICIES + BASELINES + ABLATIONS))
     oof = {name: np.zeros(len(rows)) for name in methods}

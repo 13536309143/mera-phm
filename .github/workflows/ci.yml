@@ -41,6 +41,8 @@ jobs:
           python scripts/check_release.py
       - name: Causal and agent protocol tests (no API or external dataset)
         run: python -m unittest discover -s tests -v
+      - name: Bundled dataset integrity
+        run: python scripts/prepare_data.py --verify
       - name: Clean-install demo
         run: |
           mera-phm demo

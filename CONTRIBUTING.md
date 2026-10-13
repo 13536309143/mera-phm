@@ -16,6 +16,6 @@ Keep changes focused. For a new predictive mechanism, describe the hypothesis, i
 
 Publish measured results, including negative results and interval widths. Separate numerical prediction performance from LLM orchestration performance. Keep failed and budget-censored API runs in the evaluation ledger; do not count censored runs as successful or intrinsic agent failures. Mock-provider tests must remain clearly distinguished from real API validation.
 
-Do not include credentials, original dataset files, raw inspection text, device-level labels, trained model binaries, local paths, or private run histories in commits. The original dataset and generated local artifacts are ignored. Generated toy fixtures are software checks, not industrial accuracy evidence.
+Keep credentials, trained model binaries, private inspection records, local paths and private run histories out of commits. The original paper dataset is versioned only through `data/raw/Multimodal data for prognostics.zip`, its manifest and attribution notice. Do not commit extracted dataset copies or generated local artifacts. If the source bundle changes, update its checksum and verify its identity against the intended experiment dataset. Generated toy fixtures are software checks, not industrial accuracy evidence.
 
 Use pull requests for changes. Include relevant verification and identify any claim that existing experiments do not establish.

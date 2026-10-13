@@ -1,0 +1,25 @@
+{
+  "dataset": "Multimodal data for prognostics",
+  "archive": "data/raw/Multimodal data for prognostics.zip",
+  "directory": "data/raw/Multimodal data for prognostics",
+  "archive_sha256": "d275feee7e697a553c021803b3d374f1166f08880d119794c35a5be6346b9c6c",
+  "archive_bytes": 7574578,
+  "file_count": 7977,
+  "uncompressed_bytes": 15422077,
+  "dataset_fingerprint": {
+    "sha256": "c8ab30cc9a9561e56f01515d66d9d6d9d1c88c2c4cff0c5512d7afbb1e99fd1a",
+    "files": 7976,
+    "scope": "all device .txt and .tiff files, including offline labels"
+  },
+  "equipment_count": 50,
+  "observation_count": 7626,
+  "authors": [
+    "Zhe Yang",
+    "Piero Baraldi",
+    "Enrico Zio"
+  ],
+  "paper_doi": "10.1016/j.jmsy.2021.01.007",
+  "source_url": "http://www.lasar.polimi.it/?page_id=2970",
+  "original_readme": "Multimodal data for prognostics/Readme.docx",
+  "rights": "Original data belongs to its authors. The supplied README requests citation; no standalone redistribution license is supplied. The repository MIT license does not apply to this dataset."
+}

@@ -142,7 +142,13 @@ The supervisor can select quality, numerical, visual, text, maintenance, retriev
 
 ## 6. Data and training
 
-Place the dataset in `data/raw/Multimodal data for prognostics/`, containing equipment directories `1`–`50`. Existing data can be supplied with `--data` or `DATASET_PATH` in `.env`. Prefer forward slashes in Windows paths, for example `D:/datasets/Multimodal data for prognostics`.
+The source repository includes the **complete paper dataset** as [a 7.6 MB ZIP](data/raw/Multimodal%20data%20for%20prognostics.zip). The first data-dependent command automatically extracts it to `data/raw/Multimodal data for prognostics/`, containing equipment directories `1`–`50`. You can prepare and verify all 7,977 files explicitly:
+
+```bash
+python scripts/prepare_data.py --verify
+```
+
+Existing data can still be supplied with `--data` or `DATASET_PATH` in `.env`. Prefer forward slashes in Windows paths, for example `D:/datasets/Multimodal data for prognostics`. The bundle preserves the authors' original README and matches the published experiment fingerprint.
 
 See [dataset layout, fields and attribution](docs/dataset.md).
 
@@ -259,4 +265,4 @@ CI covers macOS, Windows and Linux, with separate base and optional neural workf
 
 The research focus is maintenance-dependent evidence validity and auditable routing. Current results use the paper's simulated equipment data. Numerical improvement and Agent behavior are evaluated separately; hypotheses, controls, negative results and assumptions are documented in [research design](docs/research-design.md).
 
-Code and the sample generator are MIT-licensed; original data is obtained separately. Cite [Yang, Baraldi and Zio](https://doi.org/10.1016/j.jmsy.2021.01.007) for the data and [CITATION.cff](CITATION.cff) for the software. See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).
+Code and the sample generator are MIT-licensed. The bundled original data retains its authorship and separate rights in [DATASET-NOTICE.md](data/DATASET-NOTICE.md). Cite [Yang, Baraldi and Zio](https://doi.org/10.1016/j.jmsy.2021.01.007) for the data and [CITATION.cff](CITATION.cff) for the software. See [CONTRIBUTING.md](CONTRIBUTING.md) and [SECURITY.md](SECURITY.md).

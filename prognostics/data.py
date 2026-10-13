@@ -8,6 +8,8 @@ from pathlib import Path
 import numpy as np
 from PIL import Image
 
+from .dataset_bundle import bundle_paths, prepare_bundled_data
+
 PROJECT = Path(os.getenv("MERA_WORKSPACE", Path.cwd())).resolve()
 NUMERIC_NAMES = [
     "nextinstime",
@@ -24,6 +26,8 @@ def discover_data(explicit=None):
         explicit = os.getenv("DATASET_PATH") or dotenv_values(PROJECT / ".env").get("DATASET_PATH")
     if explicit:
         root = Path(explicit).expanduser().resolve()
+        if root == bundle_paths(PROJECT)[2].resolve() and not (root / "1/time.txt").is_file():
+            prepare_bundled_data(PROJECT)
         if not (root / "1/time.txt").is_file():
             raise ValueError("数据目录中没有 1/time.txt。")
         return root
@@ -33,6 +37,8 @@ def discover_data(explicit=None):
         PROJECT / "data/demo",
     ]
     for root in choices:
+        if root == bundle_paths(PROJECT)[2] and not (root / "1/time.txt").is_file():
+            prepare_bundled_data(PROJECT)
         if (root / "1/time.txt").is_file():
             return root
     raise ValueError("找不到数据集，请通过 --data 指定包含 1 至 50 目录的数据根目录。")

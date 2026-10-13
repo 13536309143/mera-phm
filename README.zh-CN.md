@@ -144,7 +144,13 @@ python main.py predict --data data/demo --model artifacts/demo-model/model-bank.
 
 ## 6. 准备数据与训练
 
-把数据集放在 `data/raw/Multimodal data for prognostics/`，其中包含 `1` 至 `50` 的设备目录。已有数据也可以通过 `--data` 指定，或在 `.env` 设置 `DATASET_PATH`。Windows 路径建议写成 `D:/datasets/Multimodal data for prognostics`。
+仓库已附带**完整论文数据集**：[约 7.6 MB 的压缩包](data/raw/Multimodal%20data%20for%20prognostics.zip)。首次运行数据相关命令时，项目会自动解压到 `data/raw/Multimodal data for prognostics/`，其中包含 `1` 至 `50` 的设备目录。也可以主动准备并逐文件验证：
+
+```bash
+python scripts/prepare_data.py --verify
+```
+
+压缩包完整保留 7,977 个原始文件及作者说明，数据指纹与已发布实验一致。已有数据仍可通过 `--data` 指定，或在 `.env` 设置 `DATASET_PATH`。Windows 路径建议写成 `D:/datasets/Multimodal data for prognostics`。
 
 数据字段、目录和原论文引用见 [数据说明](docs/dataset.md)。
 
@@ -243,7 +249,7 @@ experiments/
 scripts/             启动器、图表与发布检查
 tests/               数据、模型、Agent 与跨平台测试
 docs/                原理和数据文档
-data/                本地原始数据及生成的示例
+data/                完整数据压缩包、归属说明及本地解压数据
 artifacts/           本地模型和自己的实验
 runs/                预测报告及缓存
 ```
@@ -261,4 +267,4 @@ CI 覆盖 macOS、Windows、Linux，并分别检查基础流程和可选神经�
 
 项目围绕维护事件、证据有效性和可审计路由提供可复现实验；当前结果来自论文的模拟设备数据。数值预测改善与 Agent 编排分别评价，详细研究假设、对照、负结果和适用范围见 [研究设计](docs/research-design.md)。
 
-代码及示例生成器采用 MIT 许可；原始数据需单独获取。使用数据请引用 [Yang、Baraldi、Zio 的论文](https://doi.org/10.1016/j.jmsy.2021.01.007)，软件引用见 [CITATION.cff](CITATION.cff)。贡献与配置说明见 [CONTRIBUTING.md](CONTRIBUTING.md)、[SECURITY.md](SECURITY.md)。
+代码及示例生成器采用 MIT 许可；附带的原始数据保留作者归属和独立权利，见 [DATASET-NOTICE.md](data/DATASET-NOTICE.md)。使用数据请引用 [Yang、Baraldi、Zio 的论文](https://doi.org/10.1016/j.jmsy.2021.01.007)，软件引用见 [CITATION.cff](CITATION.cff)。贡献与配置说明见 [CONTRIBUTING.md](CONTRIBUTING.md)、[SECURITY.md](SECURITY.md)。

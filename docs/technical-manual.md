@@ -91,7 +91,7 @@ The numerical forecast is computed before the LLM narrative. If the API workflow
 
 ### 4.1 Directory layout
 
-Place the paper dataset under `data/raw/Multimodal data for prognostics/`, or supply its location with `--data`. The root passed to the application directly contains equipment directories `1` through `50`:
+The source repository includes the complete paper dataset as [a ZIP archive](../data/raw/Multimodal%20data%20for%20prognostics.zip). First use of the default data location automatically extracts it into `data/raw/Multimodal data for prognostics/`. Run `python scripts/prepare_data.py --verify` for explicit preparation and file-by-file verification. The authors' original README is preserved, and the dataset fingerprint matches the published experiments. An external copy can still be supplied with `--data`. The root directly contains equipment directories `1` through `50`:
 
 ```text
 Multimodal data for prognostics/
@@ -724,7 +724,7 @@ API diagnostics expose status codes or exception types. Keep real credentials ou
 
 Manage models and configuration together with their protocol. Changes to features, prompts, assignments or parameters require a new experiment directory. Preserve manifests, hashes, execution snapshots and environment records.
 
-`joblib` model loading is executable deserialization: load model files only from trusted sources. Workspace `.env`, raw data, models and local traces are local materials and are ignored by Git.
+`joblib` model loading is executable deserialization: load model files only from trusted sources. Workspace `.env`, extracted data, models and local traces are ignored by Git. Only the complete source dataset archive, attribution and verification metadata are versioned.
 
 ```bash
 python -m unittest discover -s tests -v
@@ -733,7 +733,7 @@ python scripts/check_release.py
 
 Tests cover causal loading, label isolation, eligibility, intervals, Agent protocol, budgets, neural checkpoint reload, launch portability and encoding. Optional hardware tests skip when unavailable; a skip is not hardware validation. Release CI has verified Windows/Linux/Mac; inspect the relevant run after subsequent changes.
 
-Published studies include aggregates and protocols. Raw curves, inspection text, targets, model archives and per-observation records require separate management under their data permissions. Project code is MIT licensed; data rights follow the source dataset.
+Published studies include aggregates and protocols. Original curves, inspection text and targets are provided in the dataset bundle; trained model archives and local per-observation records remain separate. Project code is MIT licensed; third-party data attribution is recorded in [the dataset notice](../data/DATASET-NOTICE.md).
 
 ## 22. Extension guide
 

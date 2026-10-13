@@ -14,6 +14,7 @@ PATTERNS = [
     re.compile(rb"/" + rb"Volumes" + rb"/OUT/"),
 ]
 FORBIDDEN = [".env", ".venv/", "artifacts/", "runs/", "data/raw/", "data/demo/"]
+BUNDLED_DATA = "data/raw/Multimodal data for prognostics.zip"
 
 
 def main():
@@ -24,7 +25,7 @@ def main():
         path = ROOT / name
         if (
             name == ".env"
-            or any(name.startswith(prefix) for prefix in FORBIDDEN[1:])
+            or any(name.startswith(prefix) for prefix in FORBIDDEN[1:] if name != BUNDLED_DATA)
             or path.suffix == ".joblib"
         ):
             failures.append((name, "private/generated file tracked"))

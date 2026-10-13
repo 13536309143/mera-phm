@@ -4,6 +4,7 @@
 !.env.example
 # Original data, generated fixtures, models and local runs
 data/raw/**
+!data/raw/Multimodal data for prognostics.zip
 data/demo/**
 artifacts/**
 runs/**
